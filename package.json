@@ -1,0 +1,19 @@
+{
+  "name": "Projeto-Site",
+  "version": "1.0.0",
+  "description": "Projeto do CTESP-Tecnologias e Gestão de Sistemas de Informação ",
+  "author": "Francisco Perez e Alexandre Araújo",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^1.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1"
+  }
+}
