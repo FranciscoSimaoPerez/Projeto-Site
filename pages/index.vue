@@ -3,7 +3,7 @@
     <div>
       <logo/>
       <h1 class="title">
-        Projeto-Site
+        CTESP-Projeto-Site
       </h1>
       <h2 class="subtitle">
         Projeto do CTESP-Tecnologias e Gestão de Sistemas de Informação 
