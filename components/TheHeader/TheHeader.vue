@@ -37,7 +37,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        background: white;
+        background: rgb(65, 65, 65);
         height: 4rem;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
     }
@@ -70,7 +70,7 @@
     .nav-link a {
         display: block;
         text-decoration: none;
-        color: black;
+        color: rgb(253, 253, 253);
         transition: color .3s ease-out;
     }
 
@@ -81,22 +81,22 @@
     } 
 
     .nav-link.nuxt-link-exact-active {
-        border-bottom: 2px solid #006DF0;
+        border-bottom: 3px solid #006DF0;
     }
 
     .nav-search{
         display: flex;
         flex-flow: row;
-        height:60%;
-        border: 1px solid rgb(160, 160, 160);
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
+        height: 60%;
+        width: auto;
+        border: 3px solid #006DF0;
+        border-radius: 3px;
         background-color: white;
         padding-left: 5px;
         padding-right: 1px;
         margin-left: 5px;
     }
+
     .search-button{
         margin: 5px;
     }
@@ -112,7 +112,7 @@
     }
     .search-icon:hover{
         cursor: pointer;
-	filter: invert(.25) sepia(2) saturate(5) hue-rotate(180deg);
+	    filter: invert(.25) sepia(2) saturate(5) hue-rotate(180deg);
 }
     
 </style>
