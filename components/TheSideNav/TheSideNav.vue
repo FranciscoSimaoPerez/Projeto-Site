@@ -27,6 +27,14 @@ export default {
 
 
 <style scoped>
+.slide-side-enter-active,
+.slide-side-leave-active {
+  transition: all 0.3s ease-out;
+}
+.slide-side-enter,
+.slide-side-leave-to,{
+  transform: translateX(-100%);
+}
 .sidenav-container {
     height: 100%;
     width: 100%;

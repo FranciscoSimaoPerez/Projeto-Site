@@ -29,7 +29,7 @@ export default {
 }
 
 body{
-  font-family: "Lato", sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .main-content {
