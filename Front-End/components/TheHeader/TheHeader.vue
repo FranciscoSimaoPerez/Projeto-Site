@@ -9,13 +9,15 @@
                 <nuxt-link to="/premium" tag="li" class="nav-link"><a>Premium</a></nuxt-link>
             </ul>
             <div class="nav-buttons">
-                <nuxt-link to="/login" class="nav-button">
-                        <a><img class="login-icon" src="@/components/TheHeader/block-white.svg" alt="Login"></a>
-                        <nuxt-link to="/login"><a>Login</a></nuxt-link>
-                </nuxt-link>
+                <div class="login-button">
+                    <nuxt-link to="/login" class="nav-button"><a><img class="login-icon" src="@/components/TheHeader/block-white.svg" alt="Login"></a><a>Login</a></nuxt-link>
+                </div>
+                <div class="search-button">
+                    <SearchToggle @toggle="$emit('searchToggle')"/> 
+                </div>
                 <div class="nav-search">
                     <input type="text" class="search-input" placeholder="Search.."/>
-                    <nuxt-link to="/search" class="search-button"><a><img class="search-icon" src="@/components/TheHeader/search.svg" alt="Pesquisar"></a></nuxt-link> 
+                    <nuxt-link to="/search" class="search-button"><a><img class="search-icon" src="@/components/TheHeader/search.svg" alt="Pesquisar"></a></nuxt-link>
                 </div>
             </div>
         </nav>
@@ -25,12 +27,14 @@
 <script>
     import Logo from "~/components/Logo.vue";
     import TheSideNavToggle from "@/components/TheSideNavToggle/TheSideNavToggle";
+    import SearchToggle from "@/components/SearchToggle/SearchToggle";
 
     export default {
         name: "TheHeader",
         components: {
             Logo,
-            TheSideNavToggle
+            TheSideNavToggle,
+            SearchToggle
         },
     }
 
@@ -118,17 +122,18 @@
         border: 0px;
         background-color: rgba(0, 0, 0, 0);
     }
-    .search-icon{
-        height: 100%;
-        width: 25px;
-        transition: .3s ease-out;
-    }
-    .search-icon:hover{
-        cursor: pointer;
-	    filter: invert(.35) sepia(2) saturate(5) hue-rotate(180deg);
+    
+
+    @media (max-width: 768px){
+        .nav-search{
+            display: none;
+        }
     }
 
-    .nav-buttons{
+</style>
+
+<style>
+.nav-buttons{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -161,6 +166,16 @@
         color: rgb(15, 179, 255);
     } 
 
+    .search-icon{
+        height: 100%;
+        width: 25px;
+        transition: .3s ease-out;
+    }
+    .search-icon:hover{
+        cursor: pointer;
+	    filter: invert(.35) sepia(2) saturate(5) hue-rotate(180deg);
+    }
+
     .login-icon{
         height: 1.5rem;
     }
@@ -169,5 +184,4 @@
         cursor: pointer;
 	    filter: invert(.35) sepia(2) saturate(5) hue-rotate(180deg);
     }
-
 </style>
