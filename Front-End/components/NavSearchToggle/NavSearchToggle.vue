@@ -1,6 +1,6 @@
 <template>
     <div class="search-toggle" role="button" @click="$emit('toggle')">
-        <nuxt-link to="/login" class="nav-button"><a><img class="search-icon" src="@/components/TheHeader/search.svg" alt="Pesquisa"></a><a>Pesquisa</a></nuxt-link>
+        <div class="nav-button"><a><img class="search-icon" src="@/components/NavSearchToggle/search-white.svg" alt="Pesquisa"></a><a>Pesquisa</a></div>
     </div>
 </template>
 

@@ -13,12 +13,9 @@
                     <nuxt-link to="/login" class="nav-button"><a><img class="login-icon" src="@/components/TheHeader/block-white.svg" alt="Login"></a><a>Login</a></nuxt-link>
                 </div>
                 <div class="search-button">
-                    <SearchToggle @toggle="$emit('searchToggle')"/> 
+                    <NavSearchToggle @toggle="$emit('searchToggle')"/> 
                 </div>
-                <div class="nav-search">
-                    <input type="text" class="search-input" placeholder="Search.."/>
-                    <nuxt-link to="/search" class="search-button"><a><img class="search-icon" src="@/components/TheHeader/search.svg" alt="Pesquisar"></a></nuxt-link>
-                </div>
+                <NavSearchBar/>
             </div>
         </nav>
     </header>
@@ -27,14 +24,16 @@
 <script>
     import Logo from "~/components/Logo.vue";
     import TheSideNavToggle from "@/components/TheSideNavToggle/TheSideNavToggle";
-    import SearchToggle from "@/components/SearchToggle/SearchToggle";
+    import NavSearchToggle from "@/components/NavSearchToggle/NavSearchToggle";
+    import NavSearchBar from "@/components/NavSearchBar/NavSearchBar";
 
     export default {
         name: "TheHeader",
         components: {
             Logo,
             TheSideNavToggle,
-            SearchToggle
+            NavSearchToggle,
+            NavSearchBar
         },
     }
 
@@ -114,21 +113,7 @@
         margin-left: 5px;
     }
 
-    .search-button{
-        margin: 5px;
-    }
-
-    .search-input{
-        border: 0px;
-        background-color: rgba(0, 0, 0, 0);
-    }
     
-
-    @media (max-width: 768px){
-        .nav-search{
-            display: none;
-        }
-    }
 
 </style>
 

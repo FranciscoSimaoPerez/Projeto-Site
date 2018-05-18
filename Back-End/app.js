@@ -1,13 +1,24 @@
-// import modules
-const express = require('express');
-const bodyParser = require('body-parser');
+var express = require('express');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
+var app = express();
 
-const database = require('./config/database.js');
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'vue'); // set up ejs for templating
 
-//create express instance
-const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }})); // Use the session middleware
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+require('./config/passport')(passport); // pass passport for configuration
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 //express server
 var server = app.listen(8081, function() {
@@ -16,10 +27,3 @@ var server = app.listen(8081, function() {
     console.log("Example app listening at http://%s:%s", host, port);
 });
 
-// GET request to list all the users from database
-app.get('/listUsers', function(req, res){
-    database.query('SELECT * FROM cliente;', function(err, rows, fields){
-        if (err) throw err;
-            res.send(rows);
-    });
-});

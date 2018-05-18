@@ -1,5 +1,5 @@
 {
-  "name": "Projeto-Site",
+  "name": "Front-End",
   "version": "1.0.0",
   "description": "Projeto do CTESP-Tecnologias e Gestão de Sistemas de Informação ",
   "author": "Francisco Perez e Alexandre Araújo",
@@ -11,8 +11,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^1.0.0",
-    "vue-instantsearch": "^1.6.0"
+    "@nuxtjs/axios": "^5.0.0",
+    "axios": "^0.18.0",
+    "nuxt": "^1.0.0"
   },
   "devDependencies": {
     "cross-env": "^5.0.1"
