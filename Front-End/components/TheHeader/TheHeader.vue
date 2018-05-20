@@ -72,6 +72,12 @@
         height: 100%;
     }
 
+    @media (max-width: 568px){
+    .nav-links{
+        display: none;
+    }
+}
+
     .nav-link{
         height: 100%;
         display: flex;

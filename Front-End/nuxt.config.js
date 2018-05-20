@@ -33,6 +33,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/carousel.js'
   ],
 
   /*
@@ -48,8 +49,17 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    // extend(config, ctx) {
       
+    // }
+    extend (config, { isServer }) {
+      if (isServer) {
+        config.externals = [
+          require('webpack-node-externals')({
+            whitelist: [/^vue-slick/]
+          })
+        ]
+      }
     }
   }
 }
