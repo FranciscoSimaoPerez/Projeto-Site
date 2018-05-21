@@ -30,6 +30,13 @@
                                     <p>Num país dominado pelo maligno Dakki, um aprendiz chamado Daikobo se levanta contra a opressão!</p>
                                 </b-carousel-slide>
                             </a></nuxt-link>
+                            <nuxt-link to="/lul"><a>
+                                <b-carousel-slide 
+                                img-src="https://i.imgur.com/cxuGOxT.png">
+                                    <h4>BORUTO: NARUTO NEXT GENERATIONS</h4>
+                                    <p>Volte ao mundo dos ninjas com as aventuras de Boruto, Sarada e a nova geração de ninjas!</p>
+                                </b-carousel-slide>
+                            </a></nuxt-link>
                         </b-carousel>
                         
                     </div>                     

@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="md" type="dark" variant="info">
+    <b-navbar toggleable="md" type="dark" variant="danger">
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -43,18 +43,11 @@
 </template>
 
 <script>
-    import Logo from "~/components/Logo.vue";
-    import TheSideNavToggle from "@/components/TheSideNavToggle/TheSideNavToggle";
-    import NavSearchToggle from "@/components/NavSearchToggle/NavSearchToggle";
-    import NavSearchBar from "@/components/NavSearchBar/NavSearchBar";
-
+   
     export default {
         name: "TheHeader",
         components: {
-            Logo,
-            TheSideNavToggle,
-            NavSearchToggle,
-            NavSearchBar
+           
         },
     }
 

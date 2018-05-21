@@ -1,23 +1,20 @@
 <template>
   <div>
-    <the-header @sideNavToggle="displaySideNav = !displaySideNav" />
-    <TheSideNav :show="displaySideNav" @close="displaySideNav=false"/>
+    <the-header />
     <nuxt/>
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/TheHeader/TheHeader'
-import TheSideNav from "@/components/TheSideNav/TheSideNav"
 
 export default {
   components:{
-    TheHeader,
-    TheSideNav
+    TheHeader
   },
   data() {
     return {
-      displaySideNav: false
+
     }
   },
 }
