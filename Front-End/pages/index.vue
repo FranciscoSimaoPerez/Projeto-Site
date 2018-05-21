@@ -3,14 +3,26 @@
         <div class="content-container">
             <div class="row-container">
                 <div class="column-main">
-                    <carousel :loop="true" :autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="true" :per-page="1">
-                        <slide>
-                          <a><img src="https://i.imgur.com/hEp6PV2.png"></a>
-                        </slide>
-                        <slide>
-                          <img src="https://i.imgur.com/iQHScBT.png">
-                        </slide>
-                      </carousel>
+                    <div>
+                        <b-carousel id="carousel1"
+                                    style="text-shadow: 1px 1px 2px #333;"
+                                    controls
+                                    indicators
+                                    background="#ababab"
+                                    :interval="4000"
+                                    img-width="1024"
+                                    img-height="480"
+                                    v-model="slide"
+                                    @sliding-start="onSlideStart"
+                                    @sliding-end="onSlideEnd"
+                        >
+                            <b-carousel-slide img-src="https://i.imgur.com/hEp6PV2.png">
+                            </b-carousel-slide>
+                            <b-carousel-slide img-src="https://i.imgur.com/iQHScBT.png">
+                            </b-carousel-slide>
+                        </b-carousel>
+                        
+                    </div>                     
                 </div>
                 <div class="column-sec">
                     Bye
@@ -21,14 +33,28 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
+
 
 export default {
-    components: {
-    Carousel,
-    Slide
-  }
-}
+        components: {
+           
+        },
+        data () {
+            return {
+            slide: 0,
+            sliding: null
+            }
+        },
+        methods: {
+            onSlideStart (slide) {
+            this.sliding = true
+            },
+            onSlideEnd (slide) {
+            this.sliding = false
+            }
+        }
+    }
+
 </script>
 
 <style>

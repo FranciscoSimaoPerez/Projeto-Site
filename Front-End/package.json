@@ -16,11 +16,18 @@
     "bootstrap": "^4.1.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "jquery": "^3.3.1",
+    "lodash.get": "^4.4.2",
+    "lodash.startcase": "^4.4.0",
     "material-design-icons-iconfont": "^3.0.3",
     "nuxt": "^1.0.0",
-    "vue-carousel": "^0.7.3"
+    "opencollective": "^1.0.3",
+    "popper.js": "^1.14.3",
+    "vue-carousel": "^0.7.3",
+    "vue-functional-data-merge": "^2.0.6"
   },
   "devDependencies": {
-    "cross-env": "^5.0.1"
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.21.0"
   }
 }

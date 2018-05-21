@@ -33,14 +33,15 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/carousel.js'
   ],
 
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
+ modules: [
+  // With options
+  'bootstrap-vue/nuxt'
+],
 
   /*
   ** Build configuration
