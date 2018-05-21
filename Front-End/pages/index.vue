@@ -1,14 +1,14 @@
 <template>
-    <div class="main-container">
-        <div class="content-container">
-            <div class="row-container">
-                <div class="column-main">
-                    <div>
+    <b-container class="main-container">
+        <b-container class="content-container">
+            <b-row class="row-container">
+                <b-col cols="8" class="column-main">
+                    <div class="carousel">
                         <b-carousel id="carousel1"
-                                    style="text-shadow: 1px 1px 2px #333;"
+                                    style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 1rem;"
                                     controls
                                     indicators
-                                    background="#ababab"
+                                    background="none"
                                     :interval="4000"
                                     img-width="1024"
                                     img-height="480"
@@ -16,20 +16,30 @@
                                     @sliding-start="onSlideStart"
                                     @sliding-end="onSlideEnd"
                         >
-                            <b-carousel-slide img-src="https://i.imgur.com/hEp6PV2.png">
-                            </b-carousel-slide>
-                            <b-carousel-slide img-src="https://i.imgur.com/iQHScBT.png">
-                            </b-carousel-slide>
+                            <nuxt-link to="/lul"><a>
+                                <b-carousel-slide
+                                img-src="https://i.imgur.com/hEp6PV2.png">
+                                    <h4>A Rainha da Provocação - KARAKAI JOZU NO TAKAGI-SAN</h4>
+                                    <p>Ela não dá sossego pro Nishikata! Por mais que ele tente atazanar a Takagi, o tiro sempre sai pela culatra...</p>
+                                </b-carousel-slide>
+                            </a></nuxt-link>
+                            <nuxt-link to="/lul"><a>
+                                <b-carousel-slide 
+                                img-src="https://i.imgur.com/iQHScBT.png">
+                                    <h4>Começa a Luta pela Liberdade - HAKYU HOSHIN ENGI</h4>
+                                    <p>Num país dominado pelo maligno Dakki, um aprendiz chamado Daikobo se levanta contra a opressão!</p>
+                                </b-carousel-slide>
+                            </a></nuxt-link>
                         </b-carousel>
                         
                     </div>                     
-                </div>
-                <div class="column-sec">
-                    Bye
-                </div>
-            </div>
-        </div>
-    </div>
+                </b-col>
+                <b-col class="column-sec">
+                    <h6>Séries em destaque</h6>
+                </b-col>
+            </b-row>
+        </b-container>
+    </b-container>
 </template>
 
 <script>
@@ -58,44 +68,26 @@ export default {
 </script>
 
 <style>
-    .main-container{
-      width:100%;
-      display: flex;
-      justify-content: center;
-    }
+   
     .content-container{
-      width:70%;
       background-color: rgb(255, 255, 255);
-      margin-top: 4.5rem;
-      display: flex;
-      
-      align-items: center;
-      flex-direction: column;
+      margin-top: 4rem;
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     }
-    @media (max-width: 568px){
-    .content-container{
-        width: 97%;
-    }
-}
-    .row-container{
-      width: 100%;
-      display: flex;
-      flex-flow: row nowrap;
-      
-    }
+   
     .column-main{
-      border: 2px solid rgb(207, 207, 207);
-      border-radius: 2px;
-      width: 65%;
+      border-right: 1px solid rgb(207, 207, 207);
+      padding: 0 20px 0 20px;  
       margin: 5px;
     }
 
     .column-sec{
-      width: 35%;
-      border: 2px solid rgb(207, 207, 207);
-      border-radius: 2px;
       margin: 5px;
       margin-left: 0px;
+      padding: 5px 20px 5px 20px;
+    }
+    .carousel{
+        padding: 5px;
+        border: none;
     }
 </style>
