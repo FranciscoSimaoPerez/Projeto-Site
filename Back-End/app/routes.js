@@ -118,4 +118,14 @@ module.exports = function(app, passport) {
                 res.send(rows);
         });
     });
+
+    app.post('/addUser', function(request, response){
+        var add = request.body;
+        var tipo = "0";
+        var values = [[add.username,add.nome,add.tipo,add.morada,add.password,add.contacto, add.email, add.email, add.dataNascimento, add.codigoPostal, add.localidade, add.pais]];
+        connection.query('INSERT INTO cliente (Username, Nome, Tipo_de_Cliente, Morada, Palavra_Passe, Contacto, Email, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES ?',[values], function(err, rows, fields){
+            if(err) throw err;
+        response.send("Utilizador adicionado com sucesso!");
+        });
+    });
 };

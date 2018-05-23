@@ -1,16 +1,16 @@
 <template>
-    <b-navbar id="header" toggleable="md" type="dark">
+    <b-navbar id="header" toggleable="md" >
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-        <b-navbar-brand href="#">Akai Ito</b-navbar-brand>
+        <b-navbar-brand class="nav-item" href="#">Akai Ito</b-navbar-brand>
 
         <b-collapse is-nav id="nav_collapse">
 
             <b-navbar-nav>
-            <b-nav-item href="#">Séries</b-nav-item>
-            <b-nav-item href="#">Loja</b-nav-item>
-            <b-nav-item href="#">Premium</b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Séries</a></nuxt-link></b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Loja</a></nuxt-link></b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Premium</a></nuxt-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -21,7 +21,7 @@
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
             </b-nav-form>
 
-            <b-nav-item-dropdown text="Lang" right>
+            <b-nav-item-dropdown class="nav-item" text="Lang" right>
                 <b-dropdown-item href="#">EN</b-dropdown-item>
                 <b-dropdown-item href="#">ES</b-dropdown-item>
                 <b-dropdown-item href="#">RU</b-dropdown-item>
@@ -59,6 +59,16 @@
         background: rgb(240, 188, 67) !important;
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     } 
+    .nav-item {
+        color: #ffffff;
+        text-decoration: none;
+        -webkit-transition: .5s all ease;
+	    -moz-transition: .5s all ease;
+	    transition: .5s all ease;
+    }
+    .nav-item:hover {
+        color: #000000;
+    }
 
 </style>
 

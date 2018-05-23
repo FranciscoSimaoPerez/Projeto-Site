@@ -43,6 +43,7 @@
                 </b-col>
                 <b-col class="column-sec">
                     <h6>Séries em destaque</h6>
+                    
                 </b-col>
             </b-row>
         </b-container>
@@ -50,9 +51,10 @@
 </template>
 
 <script>
-
-
+import axios from 'axios';
+import AppCliente from "@/components/AppCliente/AppCliente";
 export default {
+    
         components: {
            
         },
@@ -68,10 +70,16 @@ export default {
             },
             onSlideEnd (slide) {
             this.sliding = false
+            },
+            asyncData(){
+                // retornar uma Promessa
+                return axios.get('http://localhost:8081/listUsers')
+                .then((res) =>{
+                    return {artigos: res.data}
+                })
             }
         }
-    }
-
+}
 </script>
 
 <style>
