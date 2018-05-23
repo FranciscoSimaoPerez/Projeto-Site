@@ -2,15 +2,18 @@
   <div>
     <the-header />
     <nuxt/>
+    <the-footer />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/TheHeader/TheHeader'
+import TheFooter from '@/components/TheFooter/TheFooter'
 
 export default {
   components:{
-    TheHeader
+    TheHeader,
+    TheFooter
   },
   data() {
     return {
@@ -27,7 +30,7 @@ export default {
 
 body{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  background-color: rgb(201, 201, 201);
+  background-color: rgb(255, 255, 255);
 }
 
 .main-content {

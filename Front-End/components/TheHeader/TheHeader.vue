@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="md" type="dark" variant="danger">
+    <b-navbar id="header" toggleable="md" type="dark">
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -17,7 +17,7 @@
             <b-navbar-nav class="ml-auto">
 
             <b-nav-form>
-                <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
+                <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
             </b-nav-form>
 
@@ -31,10 +31,10 @@
             <b-nav-item-dropdown right>
                 <!-- Using button-content slot -->
                 <template slot="button-content">
-                <em>User</em>
+                <em>Conta</em>
                 </template>
-                <b-dropdown-item href="#">Profile</b-dropdown-item>
-                <b-dropdown-item href="#">Signout</b-dropdown-item>
+                <b-dropdown-item href="#">Perfil</b-dropdown-item>
+                <b-dropdown-item href="#">Terminar Sessão</b-dropdown-item>
             </b-nav-item-dropdown>
             </b-navbar-nav>
 
@@ -55,7 +55,10 @@
 
 <style scoped>
     
-    
+    #header{
+        background: rgb(240, 188, 67) !important;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    } 
 
 </style>
 

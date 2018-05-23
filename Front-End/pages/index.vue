@@ -77,9 +77,10 @@ export default {
 <style>
    
     .content-container{
-      background-color: rgb(255, 255, 255);
+      background-color: rgb(250, 250, 250);
       margin-top: 4rem;
-      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+      margin-bottom: 4rem;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     }
    
     .column-main{
