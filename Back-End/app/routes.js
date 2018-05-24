@@ -24,6 +24,16 @@ module.exports = function(app, passport) {
         failureRedirect : '/login',
         failureFlash : true
     }));
+    app.get('/login', function(req, res, next) {
+        passport.authenticate('local-login', function(err, user, info) {
+          if (err) { return next(err); }
+          if (!user) { return res.send("User não encontrado"); }
+          req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.send(user);
+          });
+        })(req, res, next);
+      });
     // =====================================
     // SIGNUP ==============================
     // =====================================
@@ -121,8 +131,7 @@ module.exports = function(app, passport) {
 
     app.post('/addUser', function(request, response){
         var add = request.body;
-        var tipo = "0";
-        var values = [[add.username,add.nome,add.tipo,add.morada,add.password,add.contacto, add.email, add.email, add.dataNascimento, add.codigoPostal, add.localidade, add.pais]];
+        var values = [[add.Username,add.Nome,add.Tipo_de_Cliente="nonpremium",add.Morada,add.Palavra_Passe,add.Contacto, add.Email, add.Data_de_Nascimento, add.Codigo_Postal, add.Localidade, add.Pais]];
         connection.query('INSERT INTO cliente (Username, Nome, Tipo_de_Cliente, Morada, Palavra_Passe, Contacto, Email, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES ?',[values], function(err, rows, fields){
             if(err) throw err;
         response.send("Utilizador adicionado com sucesso!");

@@ -47,14 +47,14 @@ module.exports = function (passport) {
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, email, password, done) {
-            connection.query("SELECT email FROM akaiito.cliente WHERE email = '" + email + "'", function(err, rows){
+            connection.query("SELECT Email FROM akaiito.cliente WHERE Email = '" + Email + "'", function(err, rows){
                 if (err)
                     return done(err);
                 if (rows.length){
                     return done(null, false, req.flash('loginMessage', 'That email is already taken'));
                 } else {
-                    var query = "INSERT INTO akaiito.cliente (email, password) values ?";
-                    var values = [[email, password]];
+                    var query = "INSERT INTO akaiito.cliente (Username, Nome, Tipo_de_Cliente, Morada, Palavra_Passe, Contacto, Email, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) values ?";
+                    var values = [[Username, Nome, Tipo_de_Cliente, Morada, Palavra_Passe, Contacto, Email, Data_de_Nascimento, Codigo_Postal, Localidade, Pais]];
 
                     connection.query(query, [values], function(err, result, fields){
                         if (err) throw err;
@@ -80,7 +80,7 @@ module.exports = function (passport) {
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, email, password, done) { // callback with email and password from our form 
-            connection.query("SElECT * FROM cliente WHERE email = '"+ email + "'", function(err, rows){
+            connection.query("SElECT * FROM cliente WHERE Email = '"+ Email + "'", function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length){

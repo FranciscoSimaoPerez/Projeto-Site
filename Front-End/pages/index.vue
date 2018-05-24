@@ -72,7 +72,7 @@ import AppCliente from "@/components/AppCliente/AppCliente";
 export default {
     
         components: {
-           
+            
         },
         data () {
             return {
@@ -111,6 +111,7 @@ export default {
       border-right: 1px solid rgb(207, 207, 207);
       padding: 0 20px 0 20px;  
       margin: 5px;
+      margin-right: 0;
     }
 
     @media (max-width:767px) {

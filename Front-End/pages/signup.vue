@@ -13,6 +13,27 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 field-label-responsive">
+                                <label for="name">Username</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                                        <input type="text" name="username" class="form-control" id="name"
+                                            placeholder="Username" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-control-feedback">
+                                        <span class="text-danger align-middle">
+                                            <!-- Put username validation error messages here -->
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 field-label-responsive">
                                 <label for="name">Nome</label>
                             </div>
                             <div class="col-md-6">
@@ -98,8 +119,8 @@
                         </div>
                     </form>
                     <hr>
-                    <p>Já possui conta? <a href="/login">Login</a></p>
-                    <p>Voltar à <a href="/">Página Inicial</a>.</p>
+                    <p>Já possui conta? <nuxt-link to="/login"><a>Login</a></nuxt-link></p>
+                    <p>Voltar à <nuxt-link to="/"><a>Página Inicial</a>.</nuxt-link></p>
                 </b-col>
             </b-row>
         </b-container>
