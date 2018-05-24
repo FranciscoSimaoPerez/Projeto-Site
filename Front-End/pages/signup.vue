@@ -1,45 +1,109 @@
 <template>
-<div class="container">
-
-
-    <div class="formulario">
-                <form onsubmit="return alert" @submit.prevent="criarConta" class="form">
-                                <div class="input-control" >
-                                    <label for="">Username:</label>
-                                    <input type="text" v-model="novoUser.username">
-                                    <label for="">Email:</label>
-                                    <input type="email" required v-model="novoUser.email">
-                                    <label for="">Password:</label>
-                                    <input type="password" v-model="novoUser.password">
-                                    <label for="">Nome:</label>
-                                    <input type="text" v-model="novoUser.nome">
-                                    <label for="">Data de Nascimento:</label>
-                                    <input type="text" v-model="novoUser.dataNascimento">
-                                    <label for="">Morada:</label>
-                                    <input type="text"  v-model="novoUser.morada">
-                                    <label for="">Localidade:</label>
-                                    <input type="text" v-model="novoUser.localidade">
-                                    <label for="">Código Postal:</label>
-                                    <input type="text" placeholder="____-___" v-model="novoUser.codigoPostal">
-                                    <label for="">País:</label>
-                                    <input type="text" v-model="novoUser.pais">
-                                    <label for="">Número Telemovel:</label>
-                                    <input type="text" placeholder="9________" v-model="novoUser.contato">
-                                   
-                                    
-                                    
-                                    <!-- <div id="genero" >
-                                        <select v-model="novoUser.genero">
-                                            <option value="1">masculino</option>
-                                            <option value="2">feminino</option>
-                                            <option value="3">other</option>
-                                        </select>
-                                    </div> -->
+    <b-container fluid class="main-container">
+        <b-container class="content-container">
+            <b-row class="row-container" align-h="center">
+                <b-col class="column-main" cols="12">
+                    <form class="form-horizontal" role="form" method="POST" action="/signup">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <h2>Registo</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 field-label-responsive">
+                                <label for="name">Nome</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            placeholder="Nome" required autofocus>
+                                    </div>
                                 </div>
-                                <button type="submit" class="button" >Enviar</button>
-                </form>
-            </div>
-</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-control-feedback">
+                                        <span class="text-danger align-middle">
+                                            <!-- Put name validation error messages here -->
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 field-label-responsive">
+                                <label for="email">E-Mail</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                                        <input type="text" name="email" class="form-control" id="email"
+                                            placeholder="you@exampl.com" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-control-feedback">
+                                        <span class="text-danger align-middle">
+                                            <!-- Put e-mail validation error messages here -->
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 field-label-responsive">
+                                <label for="password">Palavra Passe</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="Password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-control-feedback">
+                                        <span class="text-danger align-middle">
+                                            <i class="fa fa-close"> Example Error Message</i>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 field-label-responsive">
+                                <label for="password">Confirmar Palavra Passe</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <div class="input-group-addon" style="width: 2.6rem">
+                                            <i class="fa fa-repeat"></i>
+                                        </div>
+                                        <input type="password" name="password-confirmation" class="form-control"
+                                            id="password-confirm" placeholder="Password" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-warning btn-lg"><i class="fa fa-user-plus"></i> Registar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <p>Já possui conta? <a href="/login">Login</a></p>
+                    <p>Voltar à <a href="/">Página Inicial</a>.</p>
+                </b-col>
+            </b-row>
+        </b-container>
+    </b-container>
 </template>
 
 <script>
@@ -54,8 +118,30 @@ export default {
     },
     methods:{
         criarConta(){
-            return axios.post('http://192.168.1.36:3000/addUser', this.novoUser);//addProduto ou addUser
+            return axios.post('http://192.168.1.36:3000/addUser', this.obj);//addProduto ou addUser
         }
     }
 }
 </script>
+
+<style scoped>
+/* @import url(' https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'); */
+@media(min-width: 768px) {
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+  }
+}
+
+.content-container{
+      background-color: rgb(250, 250, 250);
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+   
+    .column-main{
+      padding: 20px;  
+      margin: 5px;
+    }
+</style>

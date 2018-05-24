@@ -2,7 +2,7 @@
     <b-container class="main-container">
         <b-container class="content-container">
             <b-row class="row-container">
-                <b-col cols="8" class="column-main d-flex flex-wrap col-xs-12 col-sm-12 col-md-8 mt-1 mt-sm-2">
+                <b-col class="column-main d-flex flex-wrap col-xs-12 col-sm-12 col-md-8">
                     <div class="carousel">
                         <b-carousel id="carousel1"
                                     style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 1rem;"
@@ -41,7 +41,7 @@
                         
                     </div>                     
                 </b-col>
-                <b-col class="column-sec d-flex flex-wrap col-xs-12 col-sm-12 col-md-3 mt-2 mt-sm-2">
+                <b-col class="column-sec d-flex flex-wrap col-xs-12 col-sm-12 col-md-3">
                     <h6>Últimos episódios disponíveis</h6>
                     <ul>
                         <li>
@@ -89,10 +89,10 @@ export default {
             },
             asyncData(){
                 // retornar uma Promessa
-                return axios.get('http://localhost:8081/listUsers')
-                .then((res) =>{
-                    return {artigos: res.data}
+                return axios.post('http://192.168.1.36:8081/login', this.obj).then(function(response){
+                    response.data();
                 })
+                
             }
         }
 }
@@ -105,9 +105,7 @@ export default {
       margin-top: 4rem;
       margin-bottom: 4rem;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: 
-    }
+      }
    
     .column-main{
       border-right: 1px solid rgb(207, 207, 207);
@@ -119,6 +117,7 @@ export default {
         .column-main{
             border: none;
             width: 100%;
+            margin:0;
         }
 
     }

@@ -3,7 +3,7 @@
 	<section id="footer">
 		<b-container class="container">
 			<b-row class="row">
-				<b-col class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+				<b-col class="col-xs-12 col-sm-12 col-md-12">
 					<ul class="list-unstyled list-inline social text-center">
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
