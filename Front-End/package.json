@@ -19,6 +19,7 @@
     "lodash.get": "^4.4.2",
     "lodash.startcase": "^4.4.0",
     "material-design-icons-iconfont": "^3.0.3",
+    "mdbootstrap": "^4.5.3",
     "nuxt": "^1.0.0",
     "opencollective": "^1.0.3",
     "popper.js": "^1.14.3",
