@@ -13,18 +13,26 @@
 <div class="container">
 	<div class="page-header text-center">
 		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
-		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+		<a href="/" class="btn btn-default btn-sm">Logout</a>
 	</div>
 	<div class="row">
 		<!-- LOCAL INFORMATION -->
 		<div class="col-sm-6">
 			<div class="well">
 				<h3><span class="fa fa-user"></span> Local</h3>
-
 					<p>
-						<strong>id</strong>: <%= user.id %><br>
-						<strong>email</strong>: <%= user.email %><br>
-						<strong>password</strong>: <%= user.password %>
+						<strong>id</strong>: <%= user.ID_Cliente %><br>
+						<strong>Username</strong>: <%= user.Username %><br>
+						<strong>Password</strong>: <%= user.Palavra_Passe %><br>
+						<strong>Email</strong>: <%= user.Email %><br>
+						<strong>Nome</strong>: <%= user.Nome %><br>
+						<strong>Data de Nascimento</strong>: <%= user.Data_de_Nascimento %><br>
+						<strong>Morada</strong>: <%= user.Morada %><br>
+						<strong>Localidade</strong>: <%= user.Localidade %><br>
+						<strong>Codigo Postal</strong>: <%= user.Codigo_Postal %><br>
+						<strong>Pais</strong>: <%= user.Pais %><br>
+						<strong>Tipo de Cliente</strong>: <%= user.Tipo_de_Cliente %><br>
+						<strong>Contato</strong>: <%= user.Contacto %><br>
 					</p>
 
 			</div>
