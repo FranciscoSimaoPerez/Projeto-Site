@@ -23,11 +23,15 @@ module.exports = function (app, passport) {
 
     // 2 - process the login form POST
 
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile', //se autenticar passa
-        failureRedirect: '/login', //manda de volta pro login se falhar
-        failureFlash: true //ativa as mensagens flash 
-    }));
+    // app.post('/login', passport.authenticate('local-login', {
+    //     successRedirect: '/profile', //se autenticar passa
+    //     failureRedirect: '/login', //manda de volta pro login se falhar
+    //     failureFlash: true //ativa as mensagens flash 
+    // }));
+    app.post('/login', function (req, res,next) {
+        passport.authenticate('local-login',function(err,user,info){return res.send(user);})
+        (req, res, next);
+    });
 
     app.get('/profile', isLoggedIn, function (req, res) {
         res.render('profile.ejs', {
