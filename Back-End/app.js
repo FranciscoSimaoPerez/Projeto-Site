@@ -6,6 +6,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var app = express();
 
+
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));

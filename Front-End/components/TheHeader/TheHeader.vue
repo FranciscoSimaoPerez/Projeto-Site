@@ -3,7 +3,7 @@
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-        <b-navbar-brand class="nav-item" href="#">Akai Ito</b-navbar-brand>
+        <nuxt-link to="/"><b-navbar-brand class="nav-item">Akai Ito</b-navbar-brand></nuxt-link>
 
         <b-collapse is-nav id="nav_collapse">
 
@@ -33,7 +33,7 @@
                 <template slot="button-content">
                 <em>Conta</em>
                 </template>
-                <b-dropdown-item href="#">Perfil</b-dropdown-item>
+                <b-dropdown-item><nuxt-link to="/signup">Signup</nuxt-link></b-dropdown-item>
                 <b-dropdown-item href="#">Terminar Sessão</b-dropdown-item>
             </b-nav-item-dropdown>
             </b-navbar-nav>

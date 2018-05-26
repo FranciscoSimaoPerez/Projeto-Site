@@ -111,13 +111,12 @@ export default {
       border-right: 1px solid rgb(207, 207, 207);
       padding: 0 20px 0 20px;  
       margin: 5px;
-      margin-right: 0;
+      margin-left: 20px;
     }
 
     @media (max-width:767px) {
         .column-main{
             border: none;
-            width: 100%;
             margin:0;
         }
     }

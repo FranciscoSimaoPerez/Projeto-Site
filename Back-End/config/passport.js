@@ -58,18 +58,23 @@ module.exports = function (passport) {
                 if (results.length > 0) {
                     return done(null, false, req.flash('signupMessage', "Username já registado!"));
                 } else {
-                    
-                    connection.query("INSERT INTO cliente(Username, Nome, Morada, Contacto, Email, Tipo_de_Cliente, Palavra_Passe, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES('" + dados.Username + "','" + dados.Nome +"','" + dados.Morada +"','" + dados.Contacto + "','" + dados.Email +"','" + dados.Tipo_de_Cliente +"','" + dados.Palavra_Passe +"','" + dados.Data_de_Nascimento +"','" + dados.Codigo_Postal +"','" + dados.Localidade +"','" + dados.Pais +"')", function (err, result) {
-                        if (err) {
-                            return done(err);
+                    connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, results, fields) {
+                        if (results.length > 0) {
+                            return done(null, false, req.flash('signupMessage', "Username já registado!"));
+                        } else {
+                            connection.query("INSERT INTO cliente(Username, Nome, Morada, Contacto, Email, Tipo_de_Cliente, Palavra_Passe, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES('" + dados.Username + "','" + dados.Nome +"','" + dados.Morada +"','" + dados.Contacto + "','" + dados.Email +"','" + dados.Tipo_de_Cliente +"','" + dados.Palavra_Passe +"','" + dados.Data_de_Nascimento +"','" + dados.Codigo_Postal +"','" + dados.Localidade +"','" + dados.Pais +"')", function (err, result) {
+                                if (err) {
+                                    return done(err);
+                                }
+                                var user = new Object();
+                                user.ID_Cliente = result.insertId;
+                                return done(null, user);
+                            });
                         }
-                        var user = new Object();
-                        user.ID_Cliente = result.insertId;
-                        return done(null, user);
                     });
                 }
             });
-    }));
+        }));
     // =========================================================================
     // LOCAL LOGIN =============================================================
     // =========================================================================

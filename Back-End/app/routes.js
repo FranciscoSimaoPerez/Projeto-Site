@@ -1,5 +1,10 @@
 module.exports = function (app, passport) {
 
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
@@ -35,11 +40,16 @@ module.exports = function (app, passport) {
         res.render('signup.ejs', { message: req.flash('signupMessage') })
     });
 
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile', //se autenticar passa
-        failureRedirect: '/signup', //manda de volta pro login se falhar
-        failureFlash: true //ativa as mensagens flash 
-    }));
+    // app.post('/signup', passport.authenticate('local-signup', {
+    //     // successRedirect: '/profile', //se autenticar passa
+    //     // failureRedirect: '/signup', //manda de volta pro login se falhar
+    //     // failureFlash: true //ativa as mensagens flash 
+        
+    // }));
+    app.post('/signup', function (req, res,next) {
+        passport.authenticate('local-signup',function(err,user,info){return res.send(user);})
+        (req, res, next);
+    });
 
     
     // redirect to the secure profile section
