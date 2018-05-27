@@ -85,7 +85,7 @@
                                             <i class="fa fa-repeat"></i>
                                         </div>
                                         <input type="password" name="password-confirmation" class="form-control" 
-                                            id="password-confirm" placeholder="Password" required>
+                                            id="password-confirm" v-model="Cliente.Confirma_Palavra_Passe" placeholder="Password" required>
                                     </div>
                                 </div>
                             </b-col>
@@ -237,6 +237,11 @@
                                 </div>
                             </b-col>
                         </b-row>
+                        <ul id="v-for-Cliente" class="demo">
+                            <li v-for="value in object" :key="value.Mensagem">
+                                {{ value }}
+                            </li>
+                        </ul>
                         <b-row class="row">
                             <b-col class="col-md-3"></b-col>
                             <b-col class="col-md-6">
@@ -254,8 +259,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import Alert from '@/components/Alert/Alert'
 export default {
+    components:{
+        Alert: Alert
+    },
     data(){
         return{
             Cliente: {
@@ -265,10 +274,12 @@ export default {
                 Contacto: '',
                 Email: '',
                 Palavra_Passe: '',
+                Confirma_Palavra_Passe: '',
                 Data_de_Nascimento: '',
                 Codigo_Postal: '',
                 Localidade: '',
-                Pais: ''
+                Pais: '',
+                Mensagem: '',
             }
         }
     },
@@ -278,7 +289,7 @@ export default {
             .then(function(response){
             console.log(response.data);
             })
-        }
+        },
     }
 }
 </script>

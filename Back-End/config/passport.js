@@ -55,17 +55,20 @@ module.exports = function (passport) {
         function (req, Username, Palavra_Passe, done) {
             var dados = req.body;
             dados.Tipo_de_Cliente = 0;
-            dados.mensagem="";
+            dados.Mensagem="";
             connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, results, fields) {
                 if (results.length > 0) {
-                    dados.mensagem="Este username já foi utilizado";
+                    dados.Mensagem="Este username já foi utilizado";
                     return done(null,dados);
                 } else {
                     connection.query("SELECT * from akaiito.cliente where Email = '" + dados.Email + "'", function (err, results, fields) {
                         if (results.length > 0) {
-                            dados.mensagem="Este email já foi utilizado";
+                            dados.Mensagem="Este email já foi utilizado";
                             return done(null,dados);
-                        } else {
+                        } else if (dados.Palavra_Passe != dados.Confirma_Palavra_Passe){
+                                dados.Mensagem="A palavra-passe não é igual nos dois campos";
+                                return done(null,dados);
+                            } else {
                             connection.query("INSERT INTO cliente(Username, Nome, Morada, Contacto, Email, Tipo_de_Cliente, Palavra_Passe, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES('" + dados.Username + "','" + dados.Nome +"','" + dados.Morada +"','" + dados.Contacto + "','" + dados.Email +"','" + dados.Tipo_de_Cliente +"','" + dados.Palavra_Passe +"','" + dados.Data_de_Nascimento +"','" + dados.Codigo_Postal +"','" + dados.Localidade +"','" + dados.Pais +"')", function (err, result) {
                                 if (err) {
                                     return done(err);

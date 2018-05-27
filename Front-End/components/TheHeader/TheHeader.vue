@@ -3,14 +3,14 @@
 
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-        <nuxt-link to="/"><b-navbar-brand class="nav-item">Akai Ito</b-navbar-brand></nuxt-link>
+        <b-navbar-brand ><nuxt-link class="nav-item" to="/"><a>Akai Ito</a></nuxt-link></b-navbar-brand>
 
         <b-collapse is-nav id="nav_collapse">
 
             <b-navbar-nav>
-            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Séries</a></nuxt-link></b-nav-item>
-            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Loja</a></nuxt-link></b-nav-item>
-            <b-nav-item><nuxt-link class="nav-item" to="/lul"><a>Premium</a></nuxt-link></b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/series"><a>Séries</a></nuxt-link></b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/store"><a>Loja</a></nuxt-link></b-nav-item>
+            <b-nav-item><nuxt-link class="nav-item" to="/premium"><a>Premium</a></nuxt-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -30,9 +30,9 @@
 
             <b-nav-item-dropdown right>
                 <!-- Using button-content slot -->
-                <template slot="button-content">
+                <a slot="button-content">
                 <em>Conta</em>
-                </template>
+                </a>
                 <b-dropdown-item><nuxt-link to="/signup">Signup</nuxt-link></b-dropdown-item>
                 <b-dropdown-item href="#">Terminar Sessão</b-dropdown-item>
             </b-nav-item-dropdown>

@@ -9,7 +9,7 @@
 <script>
 import TheHeader from '@/components/TheHeader/TheHeader'
 import TheFooter from '@/components/TheFooter/TheFooter'
-
+import Alert from '@/components/Alert/Alert'
 export default {
   components:{
     TheHeader,
