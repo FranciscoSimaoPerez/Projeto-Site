@@ -68,7 +68,7 @@
 
 <script>
 import axios from 'axios';
-import AppCliente from "@/components/AppCliente/AppCliente";
+
 export default {
     
         components: {

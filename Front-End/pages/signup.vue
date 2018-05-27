@@ -258,7 +258,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-             Cliente: {
+            Cliente: {
                 Nome: '',
                 Username: '',
                 Morada: '',

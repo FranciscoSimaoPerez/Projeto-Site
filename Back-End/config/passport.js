@@ -49,18 +49,22 @@ module.exports = function (passport) {
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'Username',
         passwordField: 'Palavra_Passe',
+        emailField: 'Email',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, Username, Palavra_Passe, done) {
             var dados = req.body;
             dados.Tipo_de_Cliente = 0;
+            dados.mensagem="";
             connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, results, fields) {
                 if (results.length > 0) {
-                    return done(null, false, req.flash('signupMessage', "Username já registado!"));
+                    dados.mensagem="Este username já foi utilizado";
+                    return done(null,dados);
                 } else {
-                    connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, results, fields) {
+                    connection.query("SELECT * from akaiito.cliente where Email = '" + dados.Email + "'", function (err, results, fields) {
                         if (results.length > 0) {
-                            return done(null, false, req.flash('signupMessage', "Username já registado!"));
+                            dados.mensagem="Este email já foi utilizado";
+                            return done(null,dados);
                         } else {
                             connection.query("INSERT INTO cliente(Username, Nome, Morada, Contacto, Email, Tipo_de_Cliente, Palavra_Passe, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES('" + dados.Username + "','" + dados.Nome +"','" + dados.Morada +"','" + dados.Contacto + "','" + dados.Email +"','" + dados.Tipo_de_Cliente +"','" + dados.Palavra_Passe +"','" + dados.Data_de_Nascimento +"','" + dados.Codigo_Postal +"','" + dados.Localidade +"','" + dados.Pais +"')", function (err, result) {
                                 if (err) {
