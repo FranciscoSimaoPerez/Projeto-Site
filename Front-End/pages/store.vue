@@ -4,9 +4,11 @@
             <b-row align-h="center">
                 <b-col class="column-main" cols="12">
                     <div class="app">
-                        <AppFichaProduto Produto="Produto 1" valor="25"/>
-                        <AppFichaProduto Produto="Produto 2" valor="64"/>
-                        <AppFichaProduto Produto="Produto 3" valor="32"/>
+                        <AppFichaProduto v-for="(anime, index) in animes"
+                                        :key="index"
+                                        :Nome="anime.Nome"
+                                        :Preco="anime.Preco"
+                                        />
                     </div>
                 </b-col>
             </b-row>
@@ -15,11 +17,36 @@
 </template>
 
 <script>
+import axios from 'axios';
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 export default {
     components:{
         AppFichaProduto
+    },
+    asyncData(){
+        return axios.get('http://localhost:8081/listMangas')
+            .then((res) => {
+                return { anime: res.data }
+            })
     }
+    // data() {
+    //     return {
+    //         artigos:[
+    //             {
+    //                 Produto:"Produto 1",
+    //                 Valor: 25
+    //             },
+    //             {
+    //                 Produto:"Produto 2",
+    //                 Valor: 15
+    //             },
+    //             {
+    //                 Produto:"Produto 3",
+    //                 Valor: 41
+    //             }
+    //         ]
+    //     }
+    // }
 }
 </script>
 

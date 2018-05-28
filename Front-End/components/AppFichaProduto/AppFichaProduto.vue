@@ -1,7 +1,7 @@
 <template>
     <AppQuote>
-        <h2>{{Produto}}</h2>
-        <p>{{Valor}}</p>
+        <h2>{{Nome}}</h2>
+        <p>{{Preco}}</p>
     </AppQuote>
 </template>
 
@@ -12,11 +12,11 @@ export default {
         AppQuote
     },
     props:{
-        Produto:{
+        Nome:{
             type: String,
             required: true
         },
-        Valor: {
+        Preco: {
             type: Number,
             required: true
         }

@@ -101,3 +101,49 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+
+    // GET request to list all the users from database
+    app.get('/listUsers', function(req, res){
+        database.query('SELECT * FROM cliente;', function(err, rows, fields){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
+
+    app.get('/user/:id', function(req, res){
+        var userId=req.params.id;
+        database.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"';", function(err, rows){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
+
+    app.get('/listAnimes', function(req, res){
+        database.query('SELECT * FROM anime;', function(err, rows, fields){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
+
+    app.get('/anime/:id', function(req, res){
+        var animeId=req.params.id;
+        database.query("SELECT * FROM anime WHERE ID_Anime = '"+animeId+"';", function(err, rows){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
+
+    app.get('/listMangas', function(req, res){
+        database.query('SELECT * FROM manga;', function(err, rows, fields){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
+
+    app.get('/mangas/:id', function(req, res){
+        var mangaId=req.params.id;
+        database.query("SELECT * FROM anime WHERE ID_Anime = '"+mangaId+"';", function(err, rows){
+            if (err) throw err;
+                res.send(rows);
+        });
+    });
