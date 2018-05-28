@@ -1,7 +1,7 @@
 <template>
     <AppQuote>
         <h2>{{Nome}}</h2>
-        <p>{{Preco}}</p>
+        <p>{{Preco}}€</p>
     </AppQuote>
 </template>
 

@@ -7,7 +7,7 @@
                         <AppFichaProduto v-for="(anime, index) in animes"
                                         :key="index"
                                         :Nome="anime.Nome"
-                                        :Preco="anime.Preco"
+                                        :Preco="+anime.Preco"
                                         />
                     </div>
                 </b-col>
@@ -20,33 +20,21 @@
 import axios from 'axios';
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 export default {
+    data(){
+        return{
+            animes:[]
+        }
+    },
     components:{
         AppFichaProduto
     },
     asyncData(){
-        return axios.get('http://localhost:8081/listMangas')
+        return axios.get('http://localhost:8081/listAnimes')
             .then((res) => {
-                return { anime: res.data }
+                console.log(res.data);
+                return { animes: res.data }
             })
-    }
-    // data() {
-    //     return {
-    //         artigos:[
-    //             {
-    //                 Produto:"Produto 1",
-    //                 Valor: 25
-    //             },
-    //             {
-    //                 Produto:"Produto 2",
-    //                 Valor: 15
-    //             },
-    //             {
-    //                 Produto:"Produto 3",
-    //                 Valor: 41
-    //             }
-    //         ]
-    //     }
-    // }
+    },
 }
 </script>
 

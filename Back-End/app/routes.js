@@ -1,4 +1,13 @@
+var mysql = require('mysql');
+var connection=mysql.createConnection({
+    host        :'localhost',
+    user        :'root',
+    password    :'',
+    database    :'akaiito'
+});
+
 module.exports = function (app, passport) {
+    
 
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -90,6 +99,51 @@ module.exports = function (app, passport) {
         res.redirect('/');
     })
 
+        // GET request to list all the users from database
+        app.get('/listUsers', function(req, res){
+            connection.query('SELECT * FROM cliente;', function(err, rows, fields){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
+    
+        app.get('/user/:id', function(req, res){
+            var userId=req.params.id;
+            connection.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"';", function(err, rows){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
+    
+        app.get('/listAnimes', function(req, res){
+            connection.query('SELECT * FROM anime', function(err, rows, fields){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
+    
+        app.get('/anime/:id', function(req, res){
+            var animeId=req.params.id;
+            connection.query("SELECT * FROM anime WHERE ID_Anime = '"+animeId+"';", function(err, rows){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
+    
+        app.get('/listMangas', function(req, res){
+            connection.query('SELECT * FROM manga;', function(err, rows, fields){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
+    
+        app.get('/mangas/:id', function(req, res){
+            var mangaId=req.params.id;
+            connection.query("SELECT * FROM anime WHERE ID_Anime = '"+mangaId+"';", function(err, rows){
+                if (err) throw err;
+                    res.send(rows);
+            });
+        });
 };
 
 // route middleware to make sure a user is logged in
@@ -102,48 +156,3 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-    // GET request to list all the users from database
-    app.get('/listUsers', function(req, res){
-        database.query('SELECT * FROM cliente;', function(err, rows, fields){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
-
-    app.get('/user/:id', function(req, res){
-        var userId=req.params.id;
-        database.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"';", function(err, rows){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
-
-    app.get('/listAnimes', function(req, res){
-        database.query('SELECT * FROM anime;', function(err, rows, fields){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
-
-    app.get('/anime/:id', function(req, res){
-        var animeId=req.params.id;
-        database.query("SELECT * FROM anime WHERE ID_Anime = '"+animeId+"';", function(err, rows){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
-
-    app.get('/listMangas', function(req, res){
-        database.query('SELECT * FROM manga;', function(err, rows, fields){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
-
-    app.get('/mangas/:id', function(req, res){
-        var mangaId=req.params.id;
-        database.query("SELECT * FROM anime WHERE ID_Anime = '"+mangaId+"';", function(err, rows){
-            if (err) throw err;
-                res.send(rows);
-        });
-    });
