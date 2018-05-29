@@ -3,13 +3,7 @@
         <b-container class="content-container">
             <b-row align-h="center">
                 <b-col class="column-main" cols="12">
-                    <div class="app">
-                        <AppFichaProduto v-for="(anime, index) in animes"
-                                        :key="index"
-                                        :Nome="anime.Nome"
-                                        :Preco="+anime.Preco"
-                                        />
-                    </div>
+                    
                 </b-col>
             </b-row>
         </b-container>
@@ -21,9 +15,7 @@ import axios from 'axios';
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 export default {
     data(){
-        return{
-            animes:[]
-        }
+        
     },
     components:{
         AppFichaProduto
@@ -35,6 +27,7 @@ export default {
                 return { animes: res.data }
             })
     },
+    
 }
 </script>
 

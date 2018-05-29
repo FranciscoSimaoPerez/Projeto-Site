@@ -1,25 +1,28 @@
 <template>
   <div>
     <the-header />
+
     <nuxt/>
     <the-footer />
   </div>
 </template>
 
+
 <script>
 import TheHeader from '@/components/TheHeader/TheHeader'
 import TheFooter from '@/components/TheFooter/TheFooter'
+import ShoppingCart from '@/components/ShoppingCart/ShoppingCart'
 import Alert from '@/components/Alert/Alert'
+import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 export default {
   components:{
     TheHeader,
-    TheFooter
+    TheFooter,
+    AppFichaProduto,
+    ShoppingCart
   },
-  data() {
-    return {
-
-    }
-  },
+  
+  
 }
 </script>
 

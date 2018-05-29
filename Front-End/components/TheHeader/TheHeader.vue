@@ -20,8 +20,8 @@
                 <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
             </b-nav-form>
-            <b-nav-item  size="xl"><i class="fa fa-shopping-cart"></i></b-nav-item>
-
+            
+            <ShoppingCart />
             <b-nav-item-dropdown right>
                 <!-- Using button-content slot -->
                 <a slot="button-content">
@@ -37,12 +37,13 @@
 </template>
 
 <script>
-   
+   import ShoppingCart from '@/components/ShoppingCart/ShoppingCart'
     export default {
         name: "TheHeader",
         components: {
-           
+           ShoppingCart,
         },
+        
     }
 
 </script>
