@@ -2,9 +2,29 @@
     <b-container fluid class="main-container">
         <b-container class="content-container">
             <b-row align-h="center">
-                <b-col class="column-main" cols="12">
-                    
-                </b-col>
+                <div>
+                    <AppFichaProduto v-for="(anime, index) in animes"
+                                         :key="index"
+                                         :Nome="anime.Nome"
+                                         :Preco="+anime.Preco"
+                                         v-on:click.native="carregaCarrinho(anime)"
+                                         style="cursor:pointer"/>
+            </div>
+            <b-nav-item-dropdown id="CarrinhoToggle" class="fa fa-shopping-cart" size="xl">
+                        <div v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
+                        <b-dropdown-item v-else class="listaCarrinhoCompras">
+                            <hr>
+                            <h3>Carrinho de Compras</h3>
+                            {{ultimaCompra | date }} - {{sum()}} €
+                            <AppFichaProduto v-for="(anime,index) in CarrinhoCompras"
+                                                :key="index"
+                                                :Nome="anime.Nome"
+                                                :Preco="anime.Preco"
+                                                :Quantidade="anime.Quantidade"
+                                                v-on:click.native="descarregaCarrinho(anime)"
+                                                />
+                        </b-dropdown-item>
+            </b-nav-item-dropdown>
             </b-row>
         </b-container>
     </b-container>
@@ -13,9 +33,14 @@
 <script>
 import axios from 'axios';
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
+
 export default {
     data(){
-        
+      return{
+        CarrinhoCompras:[],
+        ultimaCompra: false,
+        animes:[]
+      }
     },
     components:{
         AppFichaProduto
@@ -27,7 +52,23 @@ export default {
                 return { animes: res.data }
             })
     },
-    
+    methods:{
+            carregaCarrinho(anime){
+                this.CarrinhoCompras.unshift({...anime, dataCompra: new Date()});
+                this.ultimaCompra = this.CarrinhoCompras[0].dataCompra;
+            },
+            descarregaCarrinho(index){
+                this.CarrinhoCompras.splice(index,1)
+            },
+            sum(){
+            if (this.CarrinhoCompras < 1 ){
+                return 0
+            } else {
+                return this.CarrinhoCompras.map( (a) => Math.floor(a.Preco))
+                                            .reduce((a,b) => {return a + b})
+            }
+            }
+    },
 }
 </script>
 

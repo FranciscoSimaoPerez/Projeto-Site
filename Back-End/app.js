@@ -11,8 +11,12 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs'); // set up ejs for templating
-
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }})); // Use the session middleware
+app.use(express.static("public"));
+app.use(session({   secret: 'keyboard cat',
+                    cookie: { maxAge: 60000 },
+                    resave: true,
+                    saveUninitialized: true  
+                })); // Use the session middleware
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

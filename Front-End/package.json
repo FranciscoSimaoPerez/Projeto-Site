@@ -24,6 +24,7 @@
     "opencollective": "^1.0.3",
     "popper.js": "^1.14.3",
     "vue-carousel": "^0.7.3",
+    "vue-flash": "^2.1.2",
     "vue-functional-data-merge": "^2.0.6",
     "vuelidate": "^0.7.4"
   },

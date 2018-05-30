@@ -2,10 +2,10 @@
     <b-container class="main-container">
         <b-container class="content-container">
             <b-row class="row-container">
-                <b-col class="column-main d-flex flex-wrap col-xs-12 col-sm-12 col-md-8">
+                <b-col class="column-main">
                     <div class="carousel">
                         <b-carousel id="carousel1"
-                                    style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 1rem;"
+                                    style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 0.8rem;"
                                     controls
                                     indicators
                                     background="none"
@@ -40,26 +40,6 @@
                         </b-carousel>
                         
                     </div>                     
-                </b-col>
-                <b-col class="column-sec d-flex flex-wrap col-xs-12 col-sm-12 col-md-3">
-                    <h6>Últimos episódios disponíveis</h6>
-                    <ul>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                    </ul>
                 </b-col>
             </b-row>
         </b-container>
@@ -108,16 +88,15 @@ export default {
       }
    
     .column-main{
-      border-right: 1px solid rgb(207, 207, 207);
       padding: 0 20px 0 20px;  
       margin: 5px;
-      margin-left: 20px;
+      
     }
 
     @media (max-width:767px) {
         .column-main{
-            border: none;
             margin:0;
+            padding: 5px;
         }
     }
 

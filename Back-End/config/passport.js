@@ -101,11 +101,11 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (!rows.length) { // se nao achar nada na bd
-                    return done(null, false, req.flash('loginMessage', "No user Found."));
+                    return done(null, false);
                 }
 
                 if (!(rows[0].Palavra_Passe == Palavra_Passe)) { //se a pass nao for igual
-                    return done(null, false, req.flash('loginMessage', "Wrong Password!Try Again"));
+                    return done(null, false);
                 }
 
                 return done(null, rows[0]);

@@ -18,7 +18,7 @@ module.exports = function (app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+        res.render('/index.ejs'); // load the index.ejs file
     });
 
     // =====================================
@@ -38,8 +38,9 @@ module.exports = function (app, passport) {
     //     failureFlash: true //ativa as mensagens flash 
     // }));
     app.post('/login', function (req, res,next) {
-        passport.authenticate('local-login',function(err,user,info){return res.send(user);})
+        passport.authenticate('local-login',function(err,user,info){return (res.send(user));})
         (req, res, next);
+        
     });
 
     app.get('/profile', isLoggedIn, function (req, res) {
@@ -60,7 +61,8 @@ module.exports = function (app, passport) {
         
     // }));
     app.post('/signup', function (req, res,next) {
-        passport.authenticate('local-signup',function(err,user,info){return res.send(user);})
+        passport.authenticate('local-signup',function(err,user,info){
+        return res.send(user);})
         (req, res, next);
     });
 

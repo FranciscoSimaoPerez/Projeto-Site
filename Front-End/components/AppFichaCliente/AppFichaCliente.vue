@@ -1,0 +1,86 @@
+<template>
+    <AppDados>
+        <h2>Profile</h2>
+        <p>Username: {{Username}}</p>
+        <p>Email: {{Email}}</p>
+        <p>Palavra-passe: {{Palavra_Passe}}</p>
+        <p>Nome: {{Nome}}</p>
+        <p>Data de Nascimento: {{Data_de_Nascimento}}</p>
+        <p>Morada: {{Morada}}</p>
+        <p>Localidade: {{Localidade}}</p>
+        <p>Código Postal: {{Codigo_Postal}}</p>
+        <p>Pais: {{Pais}}</p>
+        <p>Contacto: {{Contacto}}</p>
+        
+    </AppDados>
+</template>
+
+<script>
+import AppDados from '@/components/AppDados/AppDados';
+export default {
+    components:{
+        AppDados
+    },
+    props:{
+        ID_Cliente:{
+            type: Number,
+            required: true
+        },
+        Username:{
+            type: String,
+            required: true
+        },
+        Email:{
+            type: String,
+            required: true
+        },
+        Palavra_Passe:{
+            type: String,
+            required: true
+        },
+        Nome:{
+            type: String,
+            required: true
+        },
+        Data_de_Nascimento:{
+            type: Date,
+            required: true
+        },
+        Morada:{
+            type: String,
+            required: true
+        },
+        Localidade:{
+            type: String,
+            required: true
+        },
+        Codigo_Postal:{
+            type: String,
+            required: true
+        },
+        Pais:{
+            type: String,
+            required: true
+        },
+        Contacto:{
+            type: String,
+            required: true
+        },
+    }
+}
+</script>
+
+<style scoped>
+div{
+    background-color: white;
+    margin: 5px;
+    border: 2px solid grey;
+    padding: 3rem;
+    width: 420px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+</style>
