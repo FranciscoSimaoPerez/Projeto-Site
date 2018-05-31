@@ -146,6 +146,29 @@ module.exports = function (app, passport) {
                     res.send(rows);
             });
         });
+
+        app.post('/addProduto', function(request, response){
+            var dados = request.body;           
+            var value=[[dados.nome, dados.preco, dados.autor, add.editora]];
+            connection.query('INSERT INTO akaiito.anime (nome, preco, autor, editora) VALUES ?',[value], function(err, rows, fields){
+                if(err) throw err;
+                rows.idanime=add.insertId;
+                response.send(rows);
+            });
+          });
+
+          app.post('/updateuser', function (req, res) {
+            var update = req.body;
+                var sqlquery = "UPDATE user SET  username=?,email=?,palavrapasse=?,nome=?,datadenascimento=?,morada=?,localidade=?,codigopostal=?,pais=?,contacto=? where iduser=?"
+                var values = [update.username, update.email, update.palavrapasse, update.nome, update.datadenascimento, update.morada, update.localidade, update.codigopostal, update.pais, update.contacto, update.iduser];
+            connection.query(sqlquery, values, function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Utilizador não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
 };
 
 // route middleware to make sure a user is logged in

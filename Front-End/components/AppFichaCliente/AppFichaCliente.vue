@@ -1,21 +1,34 @@
 <template>
     <AppDados>
         <h2>Profile</h2>
-        <p>Username: {{username}}</p>
-        <p>Email: {{email}}</p>
-        <p>Palavra-passe: {{palavrapasse}}</p>
-        <p>Nome: {{nome}}</p>
-        <p>Data de Nascimento: {{datadenascimento}}</p>
-        <p>Morada: {{morada}}</p>
-        <p>Localidade: {{localidade}}</p>
-        <p>Código Postal: {{codigopostal}}</p>
-        <p>Pais: {{pais}}</p>
-        <p>Contacto: {{contacto}}</p>
-        
+        <form @submit.prevent="update">
+        <p>Username: <input  type="text" name="username" class="form-control" v-model="novo.username"
+                    required autofocus></p>
+        <p>Email: <input  type="text" name="email" class="form-control" v-model="novo.email"
+                    required autofocus></p>
+        <p>Palavra-passe: <input  type="text" name="palavra" class="form-control" v-model="novo.palavrapasse"
+                    required autofocus></p>
+        <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
+                    required autofocus></p>
+        <p>Data de Nascimento: <input  type="text" name="datadenascimento" class="form-control" v-model="novo.datadenascimento"
+                    required autofocus></p>
+        <p>Morada: <input  type="text" name="morada" class="form-control" v-model="novo.morada"
+                    required autofocus></p>
+        <p>Localidade: <input  type="text" name="localidade" class="form-control" v-model="novo.localidade"
+                    required autofocus></p>
+        <p>Código Postal: <input  type="text" name="codigopostal" class="form-control" v-model="novo.codigopostal"
+                    required autofocus></p>
+        <p>Pais: <input  type="text" name="pais" class="form-control" v-model="novo.pais"
+                    required autofocus></p>
+        <p>Contacto: <input  type="text" name="contacto" class="form-control" v-model="novo.contacto"
+                    required autofocus></p>
+        <b-btn type="submit"  variant="primary" class="adc" >Editar</b-btn>
+        </form>
     </AppDados>
 </template>
 
 <script>
+import axios from 'axios';
 import AppDados from '@/components/AppDados/AppDados';
 export default {
     components:{
@@ -66,6 +79,37 @@ export default {
             type: Number,
             required: true
         },
+    },
+    data(){
+        return{
+            novo:{
+                iduser:this.iduser,
+                username: this.username,
+                email: this.email,
+                nome:this.nome,
+                morada:this.morada,
+                codigopostal:this.codigoppostal,
+                contacto:this.contacto,
+                palavrapasse:this.password,
+                datadenascimento:this.datadenascimento,
+                pais:this.pais,
+                localidade:this.localidade,
+                }
+            }
+    },
+    methods:{
+        update(){
+        return axios.post("http://localhost:8081/updateuser", this.novo) 
+        .then(function (response) {
+        if(response.data=="SUCCESS"){
+            alert("Dados Alterados com Sucesso!");
+        }
+        else{
+            alert("Ocorreu um Erro!")
+        }
+    });
+  }
+        
     }
 }
 </script>
