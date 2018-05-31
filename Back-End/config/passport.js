@@ -29,12 +29,12 @@ module.exports = function (passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function (user, done) {
-        done(null, user.ID_Cliente);
+        done(null, user.iduser);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function (id, done) {
-        connection.query("SELECT * FROM `cliente` where ID_Cliente = " + id, function (err, rows) {
+        connection.query("SELECT * FROM `user` where iduser = " + id, function (err, rows) {
             done(err, rows[0]);
         });
     });
@@ -47,35 +47,35 @@ module.exports = function (passport) {
 
     passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField: 'Username',
-        passwordField: 'Palavra_Passe',
-        emailField: 'Email',
+        usernameField: 'username',
+        passwordField: 'palavrapasse',
+        emailField: 'email',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-        function (req, Username, Palavra_Passe, done) {
+        function (req, username, palavrapasse, done) {
             var dados = req.body;
-            dados.Tipo_de_Cliente = 0;
-            dados.Mensagem="";
-            connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, results, fields) {
+            dados.tipouser = 'User';
+            dados.mensagem="";
+            connection.query("SELECT * from akaiito.user where username = '" + username + "'", function (err, results, fields) {
                 if (results.length > 0) {
-                    dados.Mensagem="Este username já foi utilizado";
+                    dados.mensagem="Este username já foi utilizado";
                     return done(null,dados);
                 } else {
-                    connection.query("SELECT * from akaiito.cliente where Email = '" + dados.Email + "'", function (err, results, fields) {
+                    connection.query("SELECT * from akaiito.user where email = '" + dados.email + "'", function (err, results, fields) {
                         if (results.length > 0) {
-                            dados.Mensagem="Este email já foi utilizado";
+                            dados.mensagem="Este email já foi utilizado";
                             return done(null,dados);
-                        } else if (dados.Palavra_Passe != dados.Confirma_Palavra_Passe){
-                                dados.Mensagem="A palavra-passe não é igual nos dois campos";
+                        } else if (dados.palavrapasse != dados.confirmapalavrapasse){
+                                dados.mensagem="A palavra-passe não é igual nos dois campos";
                                 return done(null,dados);
                             } else {
-                            connection.query("INSERT INTO cliente(Username, Nome, Morada, Contacto, Email, Tipo_de_Cliente, Palavra_Passe, Data_de_Nascimento, Codigo_Postal, Localidade, Pais) VALUES('" + dados.Username + "','" + dados.Nome +"','" + dados.Morada +"','" + dados.Contacto + "','" + dados.Email +"','" + dados.Tipo_de_Cliente +"','" + dados.Palavra_Passe +"','" + dados.Data_de_Nascimento +"','" + dados.Codigo_Postal +"','" + dados.Localidade +"','" + dados.Pais +"')", function (err, result) {
+                            connection.query("INSERT INTO user(username, nome, morada, contacto, email, tipouser, palavrapasse, datadenascimento, codigopostal, localidade, pais) VALUES('" + dados.username + "','" + dados.nome +"','" + dados.morada +"','" + dados.contacto + "','" + dados.email +"','" + dados.tipouser +"','" + dados.palavrapasse +"','" + dados.datadenascimento +"','" + dados.codigopostal +"','" + dados.localidade +"','" + dados.pais +"')", function (err, result) {
                                 if (err) {
                                     return done(err);
                                 }
                                 var user = new Object();
-                                user.ID_Cliente = result.insertId;
-                                return done(null, user);
+                                user.iduser = result.insertId;
+                                return done(null, dados);
                             });
                         }
                     });
@@ -90,13 +90,13 @@ module.exports = function (passport) {
 
     passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField: 'Username',
-        passwordField: 'Palavra_Passe',
+        usernameField: 'username',
+        passwordField: 'palavrapasse',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-        function (req, Username, Palavra_Passe, done) { // callback with email and password from our form   
+        function (req, username, palavrapasse, done) { // callback with email and password from our form   
 
-            connection.query("SELECT * from akaiito.cliente where Username = '" + Username + "'", function (err, rows) {
+            connection.query("SELECT * from akaiito.user where username = '" + username + "'", function (err, rows) {
                 if (err) {
                     return done(err);
                 }
@@ -104,7 +104,7 @@ module.exports = function (passport) {
                     return done(null, false);
                 }
 
-                if (!(rows[0].Palavra_Passe == Palavra_Passe)) { //se a pass nao for igual
+                if (!(rows[0].palavrapasse == palavrapasse)) { //se a pass nao for igual
                     return done(null, false);
                 }
 

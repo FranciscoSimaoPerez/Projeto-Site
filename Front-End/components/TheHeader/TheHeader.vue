@@ -20,14 +20,21 @@
                     <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                     <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
                 </b-nav-form>
-                
-                <b-nav-item-dropdown right>
-                    <!-- Using button-content slot -->
+                <div v:show="verificaLogin()[0]=='User'">
+                <b-nav-item-dropdown right >
+                    <a slot="button-content">
+                    <em>User</em>
+                    </a>
+                    <b-dropdown-item><nuxt-link to="/profile">Profile</nuxt-link></b-dropdown-item>
+                    <b-dropdown-item><button type="submit"  v-on:click="logout()" class="btn btn-lg">Logout</button></b-dropdown-item>
+                </b-nav-item-dropdown>
+                </div>
+                <b-nav-item-dropdown right v:show="verificaLogin()==''">
                     <a slot="button-content">
                     <em>Conta</em>
                     </a>
-                    <b-dropdown-item v:show="lo"><nuxt-link to="/signup">Signup</nuxt-link></b-dropdown-item>
-                    <b-dropdown-item href="#">Terminar Sessão</b-dropdown-item>
+                    <b-dropdown-item v:show="lo"><nuxt-link to="/login"><a>Login</a></nuxt-link></b-dropdown-item>
+                    <b-dropdown-item><nuxt-link to="/signup"><a>Registo</a></nuxt-link></b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
 
@@ -38,16 +45,21 @@
 <script>
     export default {
         name: "TheHeader",        
-    data(){
-        return{
-             login: ''
+    methods:{
+        verificaLogin(){
+            if(sessionStorage.getItem("tipouser")===null){
+                console.log(sessionStorage.getItem("tipouser"));
+                return "";
+            } else if(sessionStorage.getItem("tipouser")=="User") {
+                var a = ["User", sessionStorage.getItem("tipouser")];
+                return a;
+            } else if(sessionStorage.getItem("tipouser")=="Admin") {
+                return "Admin";
             }
-    },
-    asyncData(){
-        if(!(sessionStorage.getItem("")===null) || !(sessionStorage.getItem("")=="undefined")){
-            return login=false;
-        } else {
-            return login=true;
+        },
+        logout(){
+            sessionStorage.clear();
+            window.location.href = '/login';
         }
     }
 }

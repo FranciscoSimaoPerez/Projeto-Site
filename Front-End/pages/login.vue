@@ -19,7 +19,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                        <input type="text" name="Username" class="form-control" id="Username" v-model="Cliente.Username"
+                                        <input type="text" name="username" class="form-control" id="username" v-model="user.username"
                                             placeholder="Username" required autofocus>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                 <div class="form-group has-danger">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                        <input type="password" name="password" class="form-control" id="password" v-model="Cliente.Palavra_Passe"
+                                        <input type="password" name="password" class="form-control" id="password" v-model="user.palavrapasse"
                                             placeholder="Password" required>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                         </b-row>
                     </form>
                     <hr>
-                    <p>Ainda não possui conta? <nuxt-link to="/login"><a>Registe-se</a></nuxt-link></p>
+                    <p>Ainda não possui conta? <nuxt-link to="/signup"><a>Registe-se</a></nuxt-link></p>
                     <p>Voltar à <nuxt-link to="/"><a>Página Inicial</a>.</nuxt-link></p>
                 </b-col>
             </b-row>
@@ -72,21 +72,30 @@
 <script>
 import axios from 'axios';
 export default {
+    asyncData(){
+        if(!(sessionStorage.getItem("iduser")===null) && !(sessionStorage.getItem("iduser")===undefined)){
+            window.location.href = '/';                        
+        }
+    },
     data(){
         return{
-             Cliente: {
-                Username: '',
-                Palavra_Passe: ''
+             user: {
+                username: '',
+                palavrapasse: ''
             }
         }
     },
     methods:{
         fazerLogin(){
-            return axios.post('http://localhost:8081/login', this.Cliente)
+            return axios.post('http://localhost:8081/login', this.user)
             .then(function(response){
-                sessionStorage.setItem('ID_Cliente', response.data.ID_Cliente);
-                var a=sessionStorage.getItem("ID_Cliente");
+                sessionStorage.setItem('iduser', response.data.iduser);
+                if(sessionStorage.getItem('iduser')===undefined){
+                    return false;
+                } else {
+                var a=sessionStorage.getItem("iduser");
                 window.location.href = '/profile?id='+a;
+                }
             })
         }
     }

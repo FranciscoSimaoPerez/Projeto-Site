@@ -5,17 +5,17 @@
                 <b-col class="column-main" cols="12">
                     <AppFichaCliente v-for="(dado,index) in dados"
                                                 :key="index"
-                                                :IdCliente="dado.ID_Cliente"
-                                                :Nome="dado.Nome"
-                                                :Morada="dado.Morada"
-                                                :Email="dado.Email"
-                                                :Username="dado.Username"
-                                                :DataNascimento="dado.Data_de_Nascimento"
-                                                :Localidade="dado.Localidade"
-                                                :CodigoPostal="dado.Codigo_Postal"
-                                                :Pais="dado.Pais"
-                                                :Contacto="dado.Contacto"
-                                                :PalavraPasse="dado.Palavra_Passe"
+                                                :iduser="dado.iduser"
+                                                :nome="dado.nome"
+                                                :morada="dado.morada"
+                                                :email="dado.email"
+                                                :username="dado.username"
+                                                :datadenascimento="dado.datadenascimento"
+                                                :localidade="dado.localidade"
+                                                :codigopostal="dado.codigopostal"
+                                                :pais="dado.pais"
+                                                :contacto="dado.contacto"
+                                                :palavrapasse="dado.palavrapasse"
                                                 />
                     <hr>
                     <p>Ainda não possui conta? <nuxt-link to="/login"><a>Registe-se</a></nuxt-link></p>
@@ -34,10 +34,11 @@ export default {
         AppFichaCliente,
     },
     asyncData(){
-        if(!(sessionStorage.getItem("")===null) || !(sessionStorage.getItem("")=="undefined")){
+        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined)){
             window.location.href = '/login';                        
         } else {
-        return axios.get('http://localhost:8081/profile/'+sessionStorage.getItem("ID_Cliente"))
+        //if((sessionStorage.getItem("iduser")===;
+        return axios.get('http://localhost:8081/profile/'+sessionStorage.getItem("iduser"))
             .then((res) => {
                 console.log(res.data);
                 return { dados: res.data }

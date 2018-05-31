@@ -1,16 +1,16 @@
 <template>
     <AppDados>
         <h2>Profile</h2>
-        <p>Username: {{Username}}</p>
-        <p>Email: {{Email}}</p>
-        <p>Palavra-passe: {{PalavraPasse}}</p>
-        <p>Nome: {{Nome}}</p>
-        <p>Data de Nascimento: {{DataNascimento}}</p>
-        <p>Morada: {{Morada}}</p>
-        <p>Localidade: {{Localidade}}</p>
-        <p>Código Postal: {{CodigoPostal}}</p>
-        <p>Pais: {{Pais}}</p>
-        <p>Contacto: {{Contacto}}</p>
+        <p>Username: {{username}}</p>
+        <p>Email: {{email}}</p>
+        <p>Palavra-passe: {{palavrapasse}}</p>
+        <p>Nome: {{nome}}</p>
+        <p>Data de Nascimento: {{datadenascimento}}</p>
+        <p>Morada: {{morada}}</p>
+        <p>Localidade: {{localidade}}</p>
+        <p>Código Postal: {{codigopostal}}</p>
+        <p>Pais: {{pais}}</p>
+        <p>Contacto: {{contacto}}</p>
         
     </AppDados>
 </template>
@@ -22,48 +22,48 @@ export default {
         AppDados
     },
     props:{
-        ID_Cliente:{
+        iduser:{
             type: Number,
             required: true
         },
-        Username:{
+        username:{
             type: String,
             required: true
         },
-        Email:{
+        email:{
             type: String,
             required: true
         },
-        PalavraPasse:{
+        palavrapasse:{
             type: String,
             required: true
         },
-        Nome:{
+        nome:{
             type: String,
             required: true
         },
-        DataNascimento:{
-            type: Date,
-            required: true
-        },
-        Morada:{
+        datadenascimento:{
             type: String,
             required: true
         },
-        Localidade:{
+        morada:{
             type: String,
             required: true
         },
-        CodigoPostal:{
+        localidade:{
             type: String,
             required: true
         },
-        Pais:{
+        codigopostal:{
             type: String,
             required: true
         },
-        Contacto:{
+        pais:{
             type: String,
+            required: true
+        },
+        contacto:{
+            type: Number,
             required: true
         },
     }

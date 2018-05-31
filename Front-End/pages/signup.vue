@@ -19,7 +19,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                        <input type="text" name="Username" class="form-control" id="Username" v-model="Cliente.Username"
+                                        <input type="text" name="username" class="form-control" id="username" v-model="user.username"
                                             placeholder="Username" required autofocus>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                        <input type="email" name="Email" class="form-control" id="Email" v-model="Cliente.Email"
+                                        <input type="email" name="email" class="form-control" id="email" v-model="user.email"
                                             placeholder="you@exampl.com" required autofocus>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="form-group has-danger">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                        <input type="password" name="password" class="form-control" id="password" v-model="Cliente.Palavra_Passe"
+                                        <input type="password" name="password" class="form-control" id="password" v-model="user.palavrapasse"
                                             placeholder="Password" required>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                             <i class="fa fa-repeat"></i>
                                         </div>
                                         <input type="password" name="password-confirmation" class="form-control" 
-                                            id="password-confirm" v-model="Cliente.Confirma_Palavra_Passe" placeholder="Password" required>
+                                            id="passwordconfirm" v-model="user.confirmapalavrapasse" placeholder="Password" required>
                                     </div>
                                 </div>
                             </b-col>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                        <input type="text" name="name" class="form-control" id="Nome" v-model="Cliente.Nome"
+                                        <input type="text" name="name" class="form-control" id="Nome" v-model="user.nome"
                                             placeholder="Nome" required autofocus>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-calendar"></i></div>
-                                        <input type="date" name="Data_de_nascimento" class="form-control" id="Data_de_nascimento" v-model="Cliente.Data_de_Nascimento"
+                                        <input type="date" name="datadenascimento" class="form-control" id="datadenascimento" v-model="user.datadenascimento"
                                             placeholder="dd/mm/aaaa" required autofocus>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-road"></i></div>
-                                        <input type="text" name="Morada" class="form-control" id="Morada" v-model="Cliente.Morada"
+                                        <input type="text" name="morada" class="form-control" id="morada" v-model="user.morada"
                                             placeholder="Rua, número de porta,.." required autofocus>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-location-arrow"></i></div>
-                                        <input type="text" name="Localidade" class="form-control" id="Localidade" v-model="Cliente.Localidade"
+                                        <input type="text" name="localidade" class="form-control" id="localidade" v-model="user.localidade"
                                             placeholder="Cidade/Município" required autofocus>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map-marker"></i></div>
-                                        <input type="text" name="Codigo_Postal" class="form-control" id="Codigo_Postal" v-model="Cliente.Codigo_Postal"
+                                        <input type="text" name="codigopostal" class="form-control" id="codigopostal" v-model="user.codigopostal"
                                             placeholder="0000-000" required autofocus>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-globe"></i></div>
-                                        <input type="text" name="Pais" class="form-control" id="Pais" v-model="Cliente.Pais"
+                                        <input type="text" name="pais" class="form-control" id="pais" v-model="user.pais"
                                             placeholder="Ex: Coreia do Norte,.." required autofocus>
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@
                                 <div class="form-group">
                                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
-                                        <input type="text" name="Contacto" class="form-control" id="Contacto" v-model="Cliente.Contacto"
+                                        <input type="text" name="contacto" class="form-control" id="contacto" v-model="user.contacto"
                                             placeholder="Telefone/Telemóvel" required autofocus>
                                     </div>
                                 </div>
@@ -263,27 +263,30 @@ export default {
     },
     data(){
         return{
-            Cliente: {
-                Nome: '',
-                Username: '',
-                Morada: '',
-                Contacto: '',
-                Email: '',
-                Palavra_Passe: '',
-                Confirma_Palavra_Passe: '',
-                Data_de_Nascimento: '',
-                Codigo_Postal: '',
-                Localidade: '',
-                Pais: '',
-                Mensagem: '',
+            user: {
+                nome: '',
+                username: '',
+                morada: '',
+                contacto: '',
+                email: '',
+                palavrapasse: '',
+                confirmapalavrapasse: '',
+                datadenascimento: '',
+                codigopostal: '',
+                localidade: '',
+                pais: '',
+                mensagem: '',
             }
         }
     },
     methods:{
-        criarConta(){
-            return axios.post('http://localhost:8081/signup', this.Cliente)
-            .then(function(response){
-            console.log(response.data);
+            criarConta(){
+                return axios.post('http://localhost:8081/signup', this.user)
+                .then(function(response){
+                console.log(response.data);
+                if(response.data.mensagem==""){
+                    window.location.href = '/login';
+                }
             })
         },
     }

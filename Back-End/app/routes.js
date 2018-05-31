@@ -103,21 +103,21 @@ module.exports = function (app, passport) {
 
         // GET request to list all the users from database
         app.get('/listUsers', function(req, res){
-            connection.query('SELECT * FROM cliente;', function(err, rows, fields){
+            connection.query('SELECT * FROM user;', function(err, rows, fields){
                 if (err) throw err;
                     res.send(rows);
             });
         });
     
         app.get('/profile/:id', function(req, res){
-            var userId=req.params.id;
-            connection.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"'", function(err, rows){
+            var iduser=req.params.id;
+            connection.query("SELECT * FROM user WHERE iduser = '"+iduser+"'", function(err, rows){
                 if (err) throw err;
                     res.send(rows);
             });
         });
     
-        app.get('/listAnimes', function(req, res){
+        app.get('/animes', function(req, res){
             connection.query('SELECT * FROM anime', function(err, rows, fields){
                 if (err) throw err;
                     res.send(rows);
@@ -125,8 +125,8 @@ module.exports = function (app, passport) {
         });
     
         app.get('/anime/:id', function(req, res){
-            var animeId=req.params.id;
-            connection.query("SELECT * FROM anime WHERE ID_Anime = '"+animeId+"';", function(err, rows){
+            var idanime=req.params.id;
+            connection.query("SELECT * FROM anime WHERE idanime = '"+idanime+"';", function(err, rows){
                 if (err) throw err;
                     res.send(rows);
             });
@@ -140,8 +140,8 @@ module.exports = function (app, passport) {
         });
     
         app.get('/mangas/:id', function(req, res){
-            var mangaId=req.params.id;
-            connection.query("SELECT * FROM anime WHERE ID_Anime = '"+mangaId+"';", function(err, rows){
+            var idmanga=req.params.id;
+            connection.query("SELECT * FROM manga WHERE idmanga = '"+idmanga+"';", function(err, rows){
                 if (err) throw err;
                     res.send(rows);
             });
