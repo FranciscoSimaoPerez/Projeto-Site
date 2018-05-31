@@ -14,6 +14,8 @@ import TheFooter from '@/components/TheFooter/TheFooter'
 import ShoppingCart from '@/components/ShoppingCart/ShoppingCart'
 import Alert from '@/components/Alert/Alert'
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
+import createPersistedState from "vuex-persistedstate";
+
 export default {
   components:{
     TheHeader,
@@ -21,7 +23,9 @@ export default {
     AppFichaProduto,
     ShoppingCart
   },
-  
+  methods:{
+   
+  }
   
 }
 </script>

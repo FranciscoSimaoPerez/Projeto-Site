@@ -3,12 +3,12 @@
         <h2>Profile</h2>
         <p>Username: {{Username}}</p>
         <p>Email: {{Email}}</p>
-        <p>Palavra-passe: {{Palavra_Passe}}</p>
+        <p>Palavra-passe: {{PalavraPasse}}</p>
         <p>Nome: {{Nome}}</p>
-        <p>Data de Nascimento: {{Data_de_Nascimento}}</p>
+        <p>Data de Nascimento: {{DataNascimento}}</p>
         <p>Morada: {{Morada}}</p>
         <p>Localidade: {{Localidade}}</p>
-        <p>Código Postal: {{Codigo_Postal}}</p>
+        <p>Código Postal: {{CodigoPostal}}</p>
         <p>Pais: {{Pais}}</p>
         <p>Contacto: {{Contacto}}</p>
         
@@ -34,7 +34,7 @@ export default {
             type: String,
             required: true
         },
-        Palavra_Passe:{
+        PalavraPasse:{
             type: String,
             required: true
         },
@@ -42,7 +42,7 @@ export default {
             type: String,
             required: true
         },
-        Data_de_Nascimento:{
+        DataNascimento:{
             type: Date,
             required: true
         },
@@ -54,7 +54,7 @@ export default {
             type: String,
             required: true
         },
-        Codigo_Postal:{
+        CodigoPostal:{
             type: String,
             required: true
         },

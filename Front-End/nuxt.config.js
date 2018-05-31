@@ -1,7 +1,7 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
 
   /*
   ** Headers of the page
@@ -34,6 +34,7 @@ module.exports = {
   */
   plugins: [
     '~plugins/date-filter.js'
+    
   ],
 
   /*

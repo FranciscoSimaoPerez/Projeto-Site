@@ -84,12 +84,9 @@ export default {
         fazerLogin(){
             return axios.post('http://localhost:8081/login', this.Cliente)
             .then(function(response){
-            window.location.href = '/profile';    
-            console.log(response.data);
-            })
-            .then(function(err){
-                console.log('err', err)
-            
+                sessionStorage.setItem('ID_Cliente', response.data.ID_Cliente);
+                var a=sessionStorage.getItem("ID_Cliente");
+                window.location.href = '/profile?id='+a;
             })
         }
     }

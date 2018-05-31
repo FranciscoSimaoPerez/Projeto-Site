@@ -109,9 +109,9 @@ module.exports = function (app, passport) {
             });
         });
     
-        app.get('/user/:id', function(req, res){
+        app.get('/profile/:id', function(req, res){
             var userId=req.params.id;
-            connection.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"';", function(err, rows){
+            connection.query("SELECT * FROM cliente WHERE ID_Cliente = '"+userId+"'", function(err, rows){
                 if (err) throw err;
                     res.send(rows);
             });

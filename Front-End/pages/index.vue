@@ -5,7 +5,7 @@
                 <b-col class="column-main">
                     <div class="carousel">
                         <b-carousel id="carousel1"
-                                    style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 0.8rem;"
+                                    style="text-shadow: 1px 1px 2px #0d0d0d; font-size: 1rem;"
                                     controls
                                     indicators
                                     background="none"
@@ -73,9 +73,11 @@ export default {
                     response.data();
                 })
                 
-            }
+            },
+            
         }
-}
+    }
+
 </script>
 
 <style>

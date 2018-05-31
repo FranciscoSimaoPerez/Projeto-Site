@@ -26,7 +26,7 @@
                     <a slot="button-content">
                     <em>Conta</em>
                     </a>
-                    <b-dropdown-item><nuxt-link to="/signup">Signup</nuxt-link></b-dropdown-item>
+                    <b-dropdown-item v:show="lo"><nuxt-link to="/signup">Signup</nuxt-link></b-dropdown-item>
                     <b-dropdown-item href="#">Terminar Sessão</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
@@ -38,8 +38,19 @@
 <script>
     export default {
         name: "TheHeader",        
+    data(){
+        return{
+             login: ''
+            }
+    },
+    asyncData(){
+        if(!(sessionStorage.getItem("")===null) || !(sessionStorage.getItem("")=="undefined")){
+            return login=false;
+        } else {
+            return login=true;
+        }
     }
-
+}
 </script>
 
 <style scoped>
