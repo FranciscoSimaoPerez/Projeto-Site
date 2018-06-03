@@ -33,10 +33,8 @@
 
 
 <script>
-import TheHeader from '@/components/TheHeader/TheHeader'
-import TheFooter from '@/components/TheFooter/TheFooter'
-import ShoppingCart from '@/components/ShoppingCart/ShoppingCart'
-import Alert from '@/components/Alert/Alert'
+import TheHeader from '@/components/TheHeader/TheHeader';
+import TheFooter from '@/components/TheFooter/TheFooter';
 import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 import axios from 'axios';
 
@@ -45,7 +43,6 @@ export default {
     TheHeader,
     TheFooter,
     AppFichaProduto,
-    ShoppingCart
   },
   data(){
       return{

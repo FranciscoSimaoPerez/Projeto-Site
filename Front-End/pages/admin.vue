@@ -5,22 +5,22 @@
                 <b-col class="column-main" cols="12">
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="\addproduto"><div class="texto">Adicionar Produtos</div></nuxt-link>
+                                <nuxt-link to="/addproduto"><div class="texto">Adicionar Produtos</div></nuxt-link>
                             </b-col>
                     </b-row>
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="\editproduto"><div class="texto">Editar Produtos</div></nuxt-link>
+                                <nuxt-link to="/editproduto"><div class="texto">Editar Produtos</div></nuxt-link>
                             </b-col>
                     </b-row>
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="\deleteproduto"><div class="texto">Eliminar Produtos</div></nuxt-link>
+                                <nuxt-link to="/deleteproduto"><div class="texto">Eliminar Produtos</div></nuxt-link>
                             </b-col>
                     </b-row>
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="\showencomendas"><div class="texto">Ver Encomendas</div></nuxt-link>
+                                <nuxt-link to="/showencomendas"><div class="texto">Ver Encomendas</div></nuxt-link>
                             </b-col>
                     </b-row>
                 </b-col>

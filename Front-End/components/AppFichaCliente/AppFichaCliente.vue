@@ -10,7 +10,7 @@
                     required autofocus></p>
         <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
                     required autofocus></p>
-        <p>Data de Nascimento: <input  type="text" name="datadenascimento" class="form-control" v-model="novo.datadenascimento"
+        <p>Data de Nascimento: <input  type="date" name="datadenascimento" class="form-control" v-model="novo.datadenascimento"
                     required autofocus></p>
         <p>Morada: <input  type="text" name="morada" class="form-control" v-model="novo.morada"
                     required autofocus></p>
@@ -116,8 +116,6 @@ export default {
 
 <style scoped>
 div{
-    background-color: white;
-
     padding: 3rem;
     width: 100%;
     position: relative;

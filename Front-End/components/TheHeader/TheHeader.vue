@@ -47,9 +47,9 @@
                     <b-dropdown-item><nuxt-link to="/signup"><a>Registo</a></nuxt-link></b-dropdown-item>
                 </b-nav-item-dropdown>
                 <b-nav-item right>
-                    <b-nav-item id="shop1" class="shop">
+                    <!-- <b-nav-item id="shop1" class="shop">
                         <v-icon @click="abrirCarrinho()" id="cart"></v-icon>
-                    </b-nav-item>
+                    </b-nav-item> -->
                 </b-nav-item>
             </b-navbar-nav>
 
