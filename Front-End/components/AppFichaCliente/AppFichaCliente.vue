@@ -6,7 +6,7 @@
                     required autofocus></p>
         <p>Email: <input  type="text" name="email" class="form-control" v-model="novo.email"
                     required autofocus></p>
-        <p>Palavra-passe: <input  type="text" name="palavra" class="form-control" v-model="novo.palavrapasse"
+        <p>Palavra-passe: <input  type="password" name="palavra" class="form-control" v-model="novo.palavrapasse"
                     required autofocus></p>
         <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
                     required autofocus></p>
@@ -88,9 +88,9 @@ export default {
                 email: this.email,
                 nome:this.nome,
                 morada:this.morada,
-                codigopostal:this.codigoppostal,
+                codigopostal:this.codigopostal,
                 contacto:this.contacto,
-                palavrapasse:this.password,
+                palavrapasse:this.palavrapasse,
                 datadenascimento:this.datadenascimento,
                 pais:this.pais,
                 localidade:this.localidade,
@@ -117,10 +117,9 @@ export default {
 <style scoped>
 div{
     background-color: white;
-    margin: 5px;
-    border: 2px solid grey;
+
     padding: 3rem;
-    width: 420px;
+    width: 100%;
     position: relative;
     overflow: hidden;
     display: flex;

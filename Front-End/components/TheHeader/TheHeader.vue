@@ -20,22 +20,37 @@
                     <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                     <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
                 </b-nav-form>
-                <div v:show="verificaLogin()[0]=='User'">
+                <div v-if="verificaLogin()[0]=='Admin'">
                 <b-nav-item-dropdown right >
                     <a slot="button-content">
-                    <em>User</em>
+                    <em>Admin</em>
                     </a>
+                    <b-dropdown-item><nuxt-link to="/admin">Admin Menu</nuxt-link></b-dropdown-item>
                     <b-dropdown-item><nuxt-link to="/profile">Profile</nuxt-link></b-dropdown-item>
                     <b-dropdown-item><button type="submit"  v-on:click="logout()" class="btn btn-lg">Logout</button></b-dropdown-item>
                 </b-nav-item-dropdown>
                 </div>
-                <b-nav-item-dropdown right v:show="verificaLogin()==''">
+                <div v-if="verificaLogin()[0]=='User'">
+                <b-nav-item-dropdown right >
+                    <a slot="button-content">
+                    <em>User</em>
+                    </a>
+                    <b-dropdown-item><nuxt-link to="/profile"><button type="submit"  class="btn btn-lg">Profile</button></nuxt-link></b-dropdown-item>
+                    <b-dropdown-item><button type="submit"  v-on:click="logout()" class="btn btn-lg">Logout</button></b-dropdown-item>
+                </b-nav-item-dropdown>
+                </div>
+                <b-nav-item-dropdown right v-if="verificaLogin()==''">
                     <a slot="button-content">
                     <em>Conta</em>
                     </a>
-                    <b-dropdown-item v:show="lo"><nuxt-link to="/login"><a>Login</a></nuxt-link></b-dropdown-item>
+                    <b-dropdown-item><nuxt-link to="/login"><a>Login</a></nuxt-link></b-dropdown-item>
                     <b-dropdown-item><nuxt-link to="/signup"><a>Registo</a></nuxt-link></b-dropdown-item>
                 </b-nav-item-dropdown>
+                <b-nav-item right>
+                    <b-nav-item id="shop1" class="shop">
+                        <v-icon @click="abrirCarrinho()" id="cart"></v-icon>
+                    </b-nav-item>
+                </b-nav-item>
             </b-navbar-nav>
 
         </b-collapse>
@@ -54,12 +69,25 @@
                 var a = ["User", sessionStorage.getItem("tipouser")];
                 return a;
             } else if(sessionStorage.getItem("tipouser")=="Admin") {
-                return "Admin";
+                var a = ["Admin", sessionStorage.getItem("tipouser")];
+                return a;
             }
         },
         logout(){
             sessionStorage.clear();
             window.location.href = '/login';
+        },
+        abrirCarrinho(){
+            var x =document.getElementById("divCarrinho");
+            if(x.style.display === "block"){
+                x.style.display = "none";
+                if(document.onclick = function(e){
+
+                });
+            // } else {
+            //     x.style.display = 
+            // }
+            }
         }
     }
 }

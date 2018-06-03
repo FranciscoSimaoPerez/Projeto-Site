@@ -285,7 +285,12 @@ export default {
                 .then(function(response){
                 console.log(response.data);
                 if(response.data.mensagem==""){
+                    alert("Utilizador criado!");
                     window.location.href = '/login';
+                } else if(response.data.mensagem=="Este email já foi utilizado"){
+                    alert("Este email já foi utilizado!");
+                } else if(response.data.mensagem=="Este username já foi utilizado"){
+                    alert("Este username já foi utilizado!");
                 }
             })
         },

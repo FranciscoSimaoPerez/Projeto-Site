@@ -10,7 +10,6 @@ var app = express();
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(express.static("public"));
 app.use(session({   secret: 'keyboard cat',
                     cookie: { maxAge: 60000 },

@@ -103,7 +103,7 @@ module.exports = function (app, passport) {
 
         // GET request to list all the users from database
         app.get('/listUsers', function(req, res){
-            connection.query('SELECT * FROM user;', function(err, rows, fields){
+            connection.query('SELECT * FROM user', function(err, rows, fields){
                 if (err) throw err;
                     res.send(rows);
             });
@@ -117,7 +117,7 @@ module.exports = function (app, passport) {
             });
         });
     
-        app.get('/animes', function(req, res){
+        app.get('/anime', function(req, res){
             connection.query('SELECT * FROM anime', function(err, rows, fields){
                 if (err) throw err;
                     res.send(rows);
@@ -147,13 +147,13 @@ module.exports = function (app, passport) {
             });
         });
 
-        app.post('/addProduto', function(request, response){
-            var dados = request.body;           
+        app.post('/addProduto', function(req, res){
+            var dados = req.body;           
             var value=[[dados.nome, dados.preco, dados.autor, add.editora]];
             connection.query('INSERT INTO akaiito.anime (nome, preco, autor, editora) VALUES ?',[value], function(err, rows, fields){
                 if(err) throw err;
                 rows.idanime=add.insertId;
-                response.send(rows);
+                res.send(rows);
             });
           });
 

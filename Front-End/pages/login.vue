@@ -89,9 +89,12 @@ export default {
         fazerLogin(){
             return axios.post('http://localhost:8081/login', this.user)
             .then(function(response){
+                sessionStorage.setItem('tipouser', response.data.tipouser);
                 sessionStorage.setItem('iduser', response.data.iduser);
                 if(sessionStorage.getItem('iduser')===undefined){
                     return false;
+                } else if(sessionStorage.getItem("tipouser")== "Admin") {
+                    window.location.href = '/admin';
                 } else {
                 var a=sessionStorage.getItem("iduser");
                 window.location.href = '/profile?id='+a;

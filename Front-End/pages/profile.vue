@@ -17,9 +17,6 @@
                                                 :contacto="dado.contacto"
                                                 :palavrapasse="dado.palavrapasse"
                                                 />
-                    <hr>
-                    <p>Ainda não possui conta? <nuxt-link to="/login"><a>Registe-se</a></nuxt-link></p>
-                    <p>Voltar à <nuxt-link to="/"><a>Página Inicial</a>.</nuxt-link></p>
                 </b-col>
             </b-row>
         </b-container>
@@ -50,3 +47,26 @@ export default {
     }
 }
 </script>
+
+<style>
+   
+    .content-container{
+      background-color: rgb(250, 250, 250);
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
+   
+    .column-main{
+      padding: 0 20px 0 20px;  
+      margin: 5px;
+      
+    }
+
+    @media (max-width:767px) {
+        .column-main{
+            margin:0;
+            padding: 5px;
+        }
+    }
+</style>

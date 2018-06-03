@@ -3,14 +3,14 @@
         <b-container class="content-container">
             <b-row align-h="center">
                 <div>
-                    <AppFichaProduto v-for="(anime, index) in animes"
+                    <!-- <AppFichaProduto v-for="(anime, index) in animes"
                                          :key="index"
-                                         :Nome="anime.Nome"
-                                         :Preco="+anime.Preco"
+                                         :nome="anime.nome"
+                                         :preco="+anime.preco"
                                          v-on:click.native="carregaCarrinho(anime)"
-                                         style="cursor:pointer"/>
-            </div>
-            <b-nav-item-dropdown id="CarrinhoToggle" class="fa fa-shopping-cart" size="xl">
+                                         style="cursor:pointer"/> -->
+                </div>
+            <!-- <b-nav-item-dropdown id="CarrinhoToggle" class="fa fa-shopping-cart" size="xl">
                         <div v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
                         <b-dropdown-item v-else class="listaCarrinhoCompras">
                             <hr>
@@ -18,13 +18,13 @@
                             {{ultimaCompra | date }} - {{sum()}} €
                             <AppFichaProduto v-for="(anime,index) in CarrinhoCompras"
                                                 :key="index"
-                                                :Nome="anime.Nome"
-                                                :Preco="anime.Preco"
-                                                :Quantidade="anime.Quantidade"
+                                                :nome="anime.nome"
+                                                :preco="anime.preco"
+                                                :quantidade="anime.quantidade"
                                                 v-on:click.native="descarregaCarrinho(anime)"
                                                 />
-                        </b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-dropdown-item> 
+            </b-nav-item-dropdown> -->
             </b-row>
         </b-container>
     </b-container>
@@ -46,7 +46,7 @@ export default {
         AppFichaProduto
     },
     asyncData(){
-        return axios.get('http://localhost:8081/listAnimes')
+        return axios.get('http://localhost:8081/anime')
             .then((res) => {
                 console.log(res.data);
                 return { animes: res.data }
