@@ -133,14 +133,14 @@ module.exports = function (app, passport) {
             });
         });
     
-        app.get('/listMangas', function(req, res){
+        app.get('/manga', function(req, res){
             connection.query('SELECT * FROM manga;', function(err, rows, fields){
                 if (err) throw err;
                     res.send(rows);
             });
         });
     
-        app.get('/mangas/:id', function(req, res){
+        app.get('/manga/:id', function(req, res){
             var idmanga=req.params.id;
             connection.query("SELECT * FROM manga WHERE idmanga = '"+idmanga+"';", function(err, rows){
                 if (err) throw err;
