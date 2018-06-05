@@ -2,7 +2,7 @@
     <AppDados>
         <div>
             <h2>Adicionar Produto</h2>
-            <form  @submit.prevent="add">
+            <form  @submit.prevent="addProduto">
             <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
                         required autofocus></p>
             <p>Preço: <input  type="text" name="preco" class="form-control" v-model="novo.preco"
@@ -12,12 +12,16 @@
             <p>Editora: <input  type="text" name="editora" class="form-control" v-model="novo.editora"
                         required autofocus></p>
             <br>
-            <p>
-            Tipo de Produto:
-            <label><input type="radio" id="anime" name="tipo" value="Anime" v-model="novo.tipo"> Anime </label>
-            <label><input type="radio" id="manga" name="tipo" value="Manga" v-model="novo.tipo"> Manga </label>
-            </p>
+
+            <b-form-group  label="Tipo de Produto:">
+                <b-form-radio-group class="form-control"
+                                    v-model="novo.tipo"
+                                    :options="options"
+                                    name="radioInline">
+                </b-form-radio-group>
+            </b-form-group>
             <b-btn type="submit"  variant="primary" class="adc" >Adicionar</b-btn>
+            <b-btn type="cancel"  v-on:click="cancel()"  variant="danger" class="adc" >Cancelar</b-btn>
             </form>
         </div>
     </AppDados>
@@ -39,11 +43,15 @@ export default {
                 editora: "",
                 tipo: "",
             },
+            options: [
+                { text: 'Anime', value: 'Anime' },
+                { text: 'Manga', value: 'Manga' },
+            ]
         }
     },
     methods:{
-        add(){
-            if(novo.tipo == "Anime"){
+        addProduto(){
+            if(this.novo.tipo == "Anime"){
                 return axios.post("http://localhost:8081/addAnime", this.novo) 
                 .then(function (response) {
                     if(response.data=="SUCCESS"){
@@ -53,8 +61,23 @@ export default {
                         alert("Ocorreu um Erro!");
                     }
                 });
-            }
+            } else if(this.novo.tipo == "Manga"){
+                return axios.post("http://localhost:8081/addManga", this.novo) 
+                .then(function (response) {
+                    if(response.data=="SUCCESS"){
+                        alert("Manga adicionado com Sucesso!");
+                    }
+                    else{
+                        alert("Ocorreu um Erro!");
+                    }
+                });
+            } else {
+                alert("Ocorreu um Erro!");
+            } 
         
+        },
+        cancel(){
+             window.location.href = '/admin'; 
         }
         
     }

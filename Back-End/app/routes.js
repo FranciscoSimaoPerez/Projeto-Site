@@ -162,7 +162,7 @@ module.exports = function (app, passport) {
         });
 
         app.post('/addAnime', function (req, res) {
-            var dados = req.body;
+                var dados = req.body;
                 var sqlquery = "INSERT INTO anime(nome, preco, autor, editora) VALUES ?"
                 var values = [[dados.nome, dados.preco, dados.autor, dados.editora]];
             connection.query(sqlquery, [values], function (err, results, fields) {
@@ -173,6 +173,18 @@ module.exports = function (app, passport) {
                 }
             });
         });
+        app.post('/addManga', function (req, res) {
+            var dados = req.body;
+            var sqlquery = "INSERT INTO manga(nome, preco, autor, editora) VALUES ?"
+            var values = [[dados.nome, dados.preco, dados.autor, dados.editora]];
+        connection.query(sqlquery, [values], function (err, results, fields) {
+            if (!results.affectedRows) {
+                res.send("Erro ao Adicionar!");
+            } else {
+                res.send("SUCCESS");
+            }
+        });
+    });
 };
 
 // route middleware to make sure a user is logged in
