@@ -11,6 +11,7 @@ module.exports = function (app, passport) {
 
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
+        res.header('Access-Control-Allow-Credentials', true);
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
     });
@@ -147,16 +148,6 @@ module.exports = function (app, passport) {
             });
         });
 
-        app.post('/addProduto', function(req, res){
-            var dados = req.body;           
-            var value=[[dados.nome, dados.preco, dados.autor, add.editora]];
-            connection.query('INSERT INTO akaiito.anime (nome, preco, autor, editora) VALUES ?',[value], function(err, rows, fields){
-                if(err) throw err;
-                rows.idanime=add.insertId;
-                res.send(rows);
-            });
-          });
-
           app.post('/updateuser', function (req, res) {
             var update = req.body;
                 var sqlquery = "UPDATE user SET  username=?,email=?,palavrapasse=?,nome=?,datadenascimento=?,morada=?,localidade=?,codigopostal=?,pais=?,contacto=? where iduser=?"
@@ -164,6 +155,19 @@ module.exports = function (app, passport) {
             connection.query(sqlquery, values, function (err, results, fields) {
                 if (!results.affectedRows) {
                     res.send("Utilizador não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
+
+        app.post('/addAnime', function (req, res) {
+            var dados = req.body;
+                var sqlquery = "INSERT INTO anime(nome, preco, autor, editora) VALUES ?"
+                var values = [[dados.nome, dados.preco, dados.autor, dados.editora]];
+            connection.query(sqlquery, [values], function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Erro ao Adicionar!");
                 } else {
                     res.send("SUCCESS");
                 }

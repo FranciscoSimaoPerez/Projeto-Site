@@ -5,25 +5,26 @@
             <form  @submit.prevent="add">
             <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
                         required autofocus></p>
-            <p>Preco: <input  type="text" name="preco" class="form-control" v-model="novo.preco"
+            <p>Preço: <input  type="text" name="preco" class="form-control" v-model="novo.preco"
                         required autofocus></p>
             <p>Autor: <input  type="text" name="autor" class="form-control" v-model="novo.autor"
                         required autofocus></p>
             <p>Editora: <input  type="text" name="editora" class="form-control" v-model="novo.editora"
                         required autofocus></p>
-            <b-form-group label="Tipo de Produto: ">
-                <b-form-radio-group v-model="selected"
-                                    :options="options"
-                                    name="radioInline">
-                </b-form-radio-group>
-            </b-form-group>
-            <b-btn type="submit"  variant="primary" class="adc" >Editar</b-btn>
+            <br>
+            <p>
+            Tipo de Produto:
+            <label><input type="radio" id="anime" name="tipo" value="Anime" v-model="novo.tipo"> Anime </label>
+            <label><input type="radio" id="manga" name="tipo" value="Manga" v-model="novo.tipo"> Manga </label>
+            </p>
+            <b-btn type="submit"  variant="primary" class="adc" >Adicionar</b-btn>
             </form>
         </div>
     </AppDados>
 </template>
 
 <script>
+import axios from 'axios';
 import AppDados from '@/components/AppDados/AppDados';
 export default {
     components:{
@@ -36,13 +37,26 @@ export default {
                 preco: "",
                 autor: "",
                 editora: "",
+                tipo: "",
             },
-            selected: 'Anime',
-            options: [
-                { text: 'Anime', value: 'Anime' },
-                { text: 'Manga', value: 'Manga' }
-            ]
         }
+    },
+    methods:{
+        add(){
+            if(novo.tipo == "Anime"){
+                return axios.post("http://localhost:8081/addAnime", this.novo) 
+                .then(function (response) {
+                    if(response.data=="SUCCESS"){
+                        alert("Anime adicionado com Sucesso!");
+                    }
+                    else{
+                        alert("Ocorreu um Erro!");
+                    }
+                });
+            }
+        
+        }
+        
     }
 }
 </script>

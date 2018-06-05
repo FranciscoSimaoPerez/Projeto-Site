@@ -100,15 +100,15 @@ export default {
     methods:{
         update(){
         return axios.post("http://localhost:8081/updateuser", this.novo) 
-        .then(function (response) {
-        if(response.data=="SUCCESS"){
-            alert("Dados Alterados com Sucesso!");
+            .then(function (response) {
+                if(response.data=="SUCCESS"){
+                    alert("Dados Alterados com Sucesso!");
+                }
+                else{
+                    alert("Ocorreu um Erro!")
+                }
+            });
         }
-        else{
-            alert("Ocorreu um Erro!")
-        }
-    });
-  }
         
     }
 }
