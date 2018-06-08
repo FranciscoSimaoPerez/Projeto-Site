@@ -3,7 +3,14 @@
         <b-container class="content-container">
             <b-row class="row-container" align-h="center">
                 <b-col class="column-main" cols="12">
-                    <AppChooseProduto />
+                    <AppEditProduto v-for="(dado,index) in dados"
+                                                :key="index"
+                                                :idanime="dado.idanime"
+                                                :nome="dado.nome"
+                                                :editora="dado.editora"
+                                                :autor="dado.autor"
+                                                :preco="dado.preco"
+                                                />
                 </b-col>
             </b-row>
         </b-container>
@@ -12,17 +19,17 @@
 
 <script>
 import axios from 'axios';
-import AppChooseProduto from '@/components/AppChooseProduto/AppChooseProduto';
+import AppEditProduto from '@/components/AppEditProduto/AppEditProduto';
 export default {
     components: {
-        AppChooseProduto,
+        AppEditProduto,
     },
     asyncData(){
-        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("iduser")=="User")){
+        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined)){
             window.location.href = '/login';                        
         } else {
         //if((sessionStorage.getItem("iduser")===;
-        return axios.get('http://localhost:8081/profile/'+sessionStorage.getItem("iduser"))
+        return axios.get('http://localhost:8081/anime/'+sessionStorage.getItem("idanime"))
             .then((res) => {
                 console.log(res.data);
                 return { dados: res.data }

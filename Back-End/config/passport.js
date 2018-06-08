@@ -75,7 +75,7 @@ module.exports = function (passport) {
                                 }
                                 var user = new Object();
                                 user.iduser = result.insertId;
-                                return done(null, "Utilizador criado!");
+                                return done(null, user);
                             });
                         }
                     });

@@ -161,6 +161,19 @@ module.exports = function (app, passport) {
             });
         });
 
+        app.post('/updateanime', function (req, res) {
+            var update = req.body;
+                var sqlquery = "UPDATE anime SET  nome=?,preco=?,autor=?,editora=? where idanime=?"
+                var values = [update.nome, update.preco, update.autor, update.editora, update.idanime];
+            connection.query(sqlquery, values, function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Anime não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
+
         app.post('/addAnime', function (req, res) {
                 var dados = req.body;
                 var sqlquery = "INSERT INTO anime(nome, preco, autor, editora) VALUES ?"
