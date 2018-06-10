@@ -1,18 +1,15 @@
 <template>
     <AppDados>
-        <h2>Editar produto</h2>
-        <form @submit.prevent="update">
+        <h2>Eliminar Anime</h2>
+        <hr>
+        <form @submit.prevent="deleteProduto">
         <!-- <p>Id: <input  type="text" name="idanime" class="form-control" v-model="edit.idanime"
                     required autofocus></p> -->
-        <p>Nome: <input  type="text" name="nome" class="form-control" v-model="edit.nome"
-                    required autofocus></p>
-        <p>Preço: <input  type="text" name="preco" class="form-control" v-model="edit.preco"
-                    required autofocus></p>
-        <p>Autor: <input  type="text" name="autor" class="form-control" v-model="edit.autor"
-                    required autofocus></p>
-        <p>Editora: <input  type="text" name="editora" class="form-control" v-model="edit.editora"
-                    required autofocus></p>
-        <b-btn type="submit"  variant="primary" class="adc" >Editar</b-btn>
+        <p>Nome: {{nome}}</p>
+        <p>Preço: {{preco}}</p>
+        <p>Autor: {{autor}}</p>
+        <p>Editora: {{editora}}</p>
+        <b-btn type="submit"  variant="primary" class="adc" >Eliminar</b-btn>
         <b-btn type="cancel"  v-on:click="cancel()"  variant="danger" class="adc" >Cancelar</b-btn>
         </form>
     </AppDados>
@@ -49,7 +46,7 @@ export default {
     },
     data(){
         return{
-            edit:{
+            del:{
                 idanime:this.idanime,
                 nome:this.nome,
                 preco:this.preco,
@@ -59,11 +56,13 @@ export default {
             }
     },
     methods:{
-        update(){
-        return axios.post("http://localhost:8081/updateanime", this.edit) 
+        deleteProduto(){
+        return axios.post("http://localhost:8081/deleteanime", this.del) 
             .then(function (response) {
                 if(response.data=="SUCCESS"){
-                    alert("Dados Alterados com Sucesso!");
+                    alert("Anime Eliminado com Sucesso!");
+                    sessionStorage.removeItem('idanime');
+                    window.location.href = '/deletechoose';
                 }
                 else{
                     alert("Ocorreu um Erro!")
@@ -71,7 +70,8 @@ export default {
             });
         },
         cancel(){
-             window.location.href = '/editchooseanime'; 
+            sessionStorage.removeItem('idanime');
+            window.location.href = '/deletechoose'; 
         }
         
     }

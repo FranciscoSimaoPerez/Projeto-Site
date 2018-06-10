@@ -18,7 +18,7 @@ export default {
         AppFichaAddProduto,
     },
     asyncData(){
-        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("iduser")=="User")){
+        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("tipouser")=="User")){
             window.location.href = '/login';                        
         } else {
         //if((sessionStorage.getItem("iduser")===;

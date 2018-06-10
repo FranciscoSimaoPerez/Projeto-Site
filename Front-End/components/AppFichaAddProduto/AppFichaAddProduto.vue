@@ -2,6 +2,7 @@
     <AppDados>
         <div>
             <h2>Adicionar Produto</h2>
+            <hr>
             <form  @submit.prevent="addProduto">
             <p>Nome: <input  type="text" name="nome" class="form-control" v-model="novo.nome"
                         required autofocus></p>
@@ -56,6 +57,7 @@ export default {
                 .then(function (response) {
                     if(response.data=="SUCCESS"){
                         alert("Anime adicionado com Sucesso!");
+                        window.location.href = '/addproduto'; 
                     }
                     else{
                         alert("Ocorreu um Erro!");
@@ -66,6 +68,7 @@ export default {
                 .then(function (response) {
                     if(response.data=="SUCCESS"){
                         alert("Manga adicionado com Sucesso!");
+                        window.location.href = '/addproduto'; 
                     }
                     else{
                         alert("Ocorreu um Erro!");

@@ -33,8 +33,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/date-filter.js'
-    
+    '~plugins/date-filter.js',
+    '~plugins/eventBus.js'
   ],
 
   /*

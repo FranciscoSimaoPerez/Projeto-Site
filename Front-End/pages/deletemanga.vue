@@ -3,9 +3,9 @@
         <b-container class="content-container">
             <b-row class="row-container" align-h="center">
                 <b-col class="column-main" cols="12">
-                    <AppEditAnime v-for="(dado,index) in dados"
+                    <AppDeleteManga v-for="(dado,index) in dados"
                                                 :key="index"
-                                                :idanime="dado.idanime"
+                                                :idmanga="dado.idmanga"
                                                 :nome="dado.nome"
                                                 :editora="dado.editora"
                                                 :autor="dado.autor"
@@ -19,17 +19,17 @@
 
 <script>
 import axios from 'axios';
-import AppEditAnime from '@/components/AppEditAnime/AppEditAnime';
+import AppDeleteManga from '@/components/AppDeleteManga/AppDeleteManga';
 export default {
     components: {
-        AppEditAnime,
+        AppDeleteManga,
     },
     asyncData(){
         if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("tipouser")=="User")){
             window.location.href = '/login';                        
         } else {
         //if((sessionStorage.getItem("iduser")===;
-        return axios.get('http://localhost:8081/anime/'+sessionStorage.getItem("idanime"))
+        return axios.get('http://localhost:8081/manga/'+sessionStorage.getItem("idmanga"))
             .then((res) => {
                 console.log(res.data);
                 return { dados: res.data }

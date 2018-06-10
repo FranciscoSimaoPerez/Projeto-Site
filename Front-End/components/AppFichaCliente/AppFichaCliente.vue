@@ -1,6 +1,7 @@
 <template>
     <AppDados>
         <h2>Profile</h2>
+        <hr>
         <form @submit.prevent="update">
         <p>Username: <input  type="text" name="username" class="form-control" v-model="novo.username"
                     required autofocus></p>

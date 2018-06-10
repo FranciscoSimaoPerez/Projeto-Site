@@ -1,10 +1,13 @@
 <template>
     <b-container fluid class="main-container">
         <b-container class="content-container">
+            <b-row class="row-container title" align-h="center">
+                <h1>Eliminar Produtos</h1>
+            </b-row>
             <b-row class="row-container" align-h="center">
                 <b-col class="column-main" cols="12">
                     <b-row class="title">
-                        <h2>Editar Animes</h2>
+                        <h2>Animes</h2>
                     </b-row>
                     <b-row class="row">
                         <AppChooseProduto v-for="(anime,index) in animes"
@@ -13,7 +16,20 @@
                                                     :nome="anime.nome"
                                                     :autor="anime.autor"
                                                     :editora="anime.editora"
-                                                    v-on:click.native="choose(anime)"
+                                                    v-on:click.native="chooseAnime(anime)"
+                                                    style="cursor:pointer"/>
+                    </b-row>
+                    <b-row class="title">
+                        <h2>Mangas</h2>
+                    </b-row>
+                    <b-row class="row">
+                        <AppChooseProduto v-for="(manga,index) in mangas"
+                                                    :key="index"
+                                                    :idmanga="manga.idmanga"
+                                                    :nome="manga.nome"
+                                                    :autor="manga.autor"
+                                                    :editora="manga.editora"
+                                                    v-on:click.native="chooseManga(manga)"
                                                     style="cursor:pointer"/>
                     </b-row>
                     <b-row class="button">
@@ -33,21 +49,27 @@ export default {
         AppChooseProduto,
     },
     asyncData(){
-        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("iduser")=="User")){
+        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("tipouser")=="User")){
             window.location.href = '/login';                        
         } else {
         //if((sessionStorage.getItem("iduser")===;
-         return axios.get('http://localhost:8081/anime')
-            .then((res) => {
-                console.log(res.data);
-                return { animes: res.data }
-            })
+        return axios.all([
+            axios.get('http://localhost:8081/anime'),
+                axios.get('http://localhost:8081/manga')
+        ])
+            .then(axios.spread((res1, res2)=>{
+                return { animes: res1.data, mangas: res2.data }
+            }))
         }
     },
     methods:{
-            choose(anime){
+            chooseAnime(anime){
                 sessionStorage.setItem("idanime", anime.idanime);
-                window.location.href = '/editanime'; 
+                window.location.href = '/deleteanime'; 
+            },
+            chooseManga(manga){
+                sessionStorage.setItem("idmanga", manga.idmanga);
+                window.location.href = '/deletemanga'; 
             },   
             cancel(){
              window.location.href = '/admin'; 

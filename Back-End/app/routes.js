@@ -174,6 +174,45 @@ module.exports = function (app, passport) {
             });
         });
 
+        app.post('/updatemanga', function (req, res) {
+            var update = req.body;
+                var sqlquery = "UPDATE manga SET  nome=?,preco=?,autor=?,editora=? where idmanga=?"
+                var values = [update.nome, update.preco, update.autor, update.editora, update.idmanga];
+            connection.query(sqlquery, values, function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Manga não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
+
+        app.post('/deleteanime', function (req, res) {
+            var deleteanime = req.body;
+                var sqlquery = "DELETE FROM anime WHERE idanime=? "
+                var values = [deleteanime.idanime];
+            connection.query(sqlquery, values, function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Anime não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
+
+        app.post('/deletemanga', function (req, res) {
+            var deletemanga = req.body;
+                var sqlquery = "DELETE FROM manga WHERE idmanga=? "
+                var values = [deletemanga.idmanga];
+            connection.query(sqlquery, values, function (err, results, fields) {
+                if (!results.affectedRows) {
+                    res.send("Manga não existe!");
+                } else {
+                    res.send("SUCCESS");
+                }
+            });
+        });
+
         app.post('/addAnime', function (req, res) {
                 var dados = req.body;
                 var sqlquery = "INSERT INTO anime(nome, preco, autor, editora) VALUES ?"

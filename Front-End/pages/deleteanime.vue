@@ -3,7 +3,7 @@
         <b-container class="content-container">
             <b-row class="row-container" align-h="center">
                 <b-col class="column-main" cols="12">
-                    <AppEditAnime v-for="(dado,index) in dados"
+                    <AppDeleteAnime v-for="(dado,index) in dados"
                                                 :key="index"
                                                 :idanime="dado.idanime"
                                                 :nome="dado.nome"
@@ -19,10 +19,10 @@
 
 <script>
 import axios from 'axios';
-import AppEditAnime from '@/components/AppEditAnime/AppEditAnime';
+import AppDeleteAnime from '@/components/AppDeleteAnime/AppDeleteAnime';
 export default {
     components: {
-        AppEditAnime,
+        AppDeleteAnime,
     },
     asyncData(){
         if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("tipouser")=="User")){

@@ -10,12 +10,12 @@
                     </b-row>
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="/editchooseanime"><div class="texto">Editar Produtos</div></nuxt-link>
+                                <nuxt-link to="/editchoose"><div class="texto">Editar Produtos</div></nuxt-link>
                             </b-col>
                     </b-row>
                     <b-row class="row" align-h="center">
                             <b-col class="col-md-3 field-label-responsive coluna">
-                                <nuxt-link to="/deleteproduto"><div class="texto">Eliminar Produtos</div></nuxt-link>
+                                <nuxt-link to="/deletechoose"><div class="texto">Eliminar Produtos</div></nuxt-link>
                             </b-col>
                     </b-row>
                     <b-row class="row" align-h="center">
@@ -37,7 +37,7 @@ export default {
         AppFichaCliente,
     },
     asyncData(){
-        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("iduser")=="User")){
+        if((sessionStorage.getItem("iduser")===null) || (sessionStorage.getItem("iduser")===undefined) || (sessionStorage.getItem("tipouser")=="User")){
             window.location.href = '/login';                        
         } else {
         //if((sessionStorage.getItem("iduser")===;

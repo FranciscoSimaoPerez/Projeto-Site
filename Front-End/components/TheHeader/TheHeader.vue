@@ -47,9 +47,7 @@
                     <b-dropdown-item><nuxt-link to="/signup"><a>Registo</a></nuxt-link></b-dropdown-item>
                 </b-nav-item-dropdown>
                 <b-nav-item right>
-                    <!-- <b-nav-item id="shop1" class="shop">
-                        <v-icon @click="abrirCarrinho()" id="cart"></v-icon>
-                    </b-nav-item> -->
+
                 </b-nav-item>
             </b-navbar-nav>
 
@@ -58,57 +56,53 @@
 </template>
 
 <script>
-    export default {
-        name: "TheHeader",        
-    methods:{
-        verificaLogin(){
-            if(sessionStorage.getItem("tipouser")===null){
-                console.log(sessionStorage.getItem("tipouser"));
-                return "";
-            } else if(sessionStorage.getItem("tipouser")=="User") {
-                var a = ["User", sessionStorage.getItem("tipouser")];
-                return a;
-            } else if(sessionStorage.getItem("tipouser")=="Admin") {
-                var a = ["Admin", sessionStorage.getItem("tipouser")];
-                return a;
-            }
-        },
-        logout(){
-            sessionStorage.clear();
-            window.location.href = '/login';
-        },
-        abrirCarrinho(){
-            var x =document.getElementById("divCarrinho");
-            if(x.style.display === "block"){
-                x.style.display = "none";
-                if(document.onclick = function(e){
-
-                });
-            // } else {
-            //     x.style.display = 
-            // }
-            }
-        }
-    }
-}
+export default {
+  name: "TheHeader",
+  methods: {
+    verificaLogin() {
+      if (sessionStorage.getItem("tipouser") === null) {
+        console.log(sessionStorage.getItem("tipouser"));
+        return "";
+      } else if (sessionStorage.getItem("tipouser") == "User") {
+        var a = ["User", sessionStorage.getItem("tipouser")];
+        return a;
+      } else if (sessionStorage.getItem("tipouser") == "Admin") {
+        var a = ["Admin", sessionStorage.getItem("tipouser")];
+        return a;
+      }
+    },
+    logout() {
+      sessionStorage.clear();
+      window.location.href = "/login";
+    },
+    // abrirCarrinho() {
+    //   var x = document.getElementById("divCarrinho");
+    //   if (x.style.display === "block") {
+    //     x.style.display = "none";
+    //     if ((document.onclick = function(e) {}));
+    //     // } else {
+    //     //     x.style.display =
+    //     // }
+    //   }
+    // }
+  }
+};
 </script>
 
 <style scoped>
-    
-    #header{
-        background: rgb(240, 188, 67) !important;
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    } 
-    .nav-item {
-        color: #ffffff;
-        text-decoration: none;
-        -webkit-transition: .5s all ease;
-	    -moz-transition: .5s all ease;
-	    transition: .5s all ease;
-    }
-    .nav-item:hover {
-        color: #000000;
-    }
-
+#header {
+  background: rgb(240, 188, 67) !important;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.nav-item {
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: 0.5s all ease;
+  -moz-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+.nav-item:hover {
+  color: #000000;
+}
 </style>
 
