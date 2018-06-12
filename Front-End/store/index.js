@@ -8,13 +8,14 @@ const createStore = () => {
        },
        mutations: {
            setCarrinho(state, animes){
-               state.CarrinhoCompras = animes
+               state.CarrinhoCompras = animes;
+               localStorage.setItem('CarrinhoCompras', JSON.stringify(state.CarrinhoCompras));
            },
        },
        actions: {},
        getters: {
            CarrinhoCompras(state) {
-               return state.CarrinhoCompras
+               return state.CarrinhoCompras//state.CarrinhoCompras
            }
        }
     })

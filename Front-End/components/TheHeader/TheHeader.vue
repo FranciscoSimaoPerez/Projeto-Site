@@ -20,6 +20,21 @@
                     <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                     <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
                 </b-nav-form>
+                <b-nav-item-dropdown id="Carrinho" class="fa fa-shopping-cart" size="xl">
+                                    <div v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
+                                    <b-dropdown-item v-else class="listaCarrinhoCompras">
+                                        <hr>
+                                        <h3>Carrinho de Compras</h3>
+                                        {{ ultimaCompra | date }} - {{sum()}} €
+                                        <AppFichaProduto v-for="(anime,index) in CarrinhoCompras"
+                                                            :key="index"
+                                                            :nome="anime.nome"
+                                                            :preco="anime.preco"
+                                                            :quantidade="anime.quantidade"
+                                                            v-on:click.native="descarregaCarrinho(anime)"
+                                                            />
+                                    </b-dropdown-item>
+                </b-nav-item-dropdown>
                 <div v-if="verificaLogin()[0]=='Admin'">
                 <b-nav-item-dropdown right >
                     <a slot="button-content">
@@ -56,9 +71,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
+
 export default {
   name: "TheHeader",
-  methods: {
+  data(){
+      return{
+        CarrinhoComprasLocal:[],
+        ultimaCompra: false,
+        animes:[]
+      }
+    },
+    components:{
+        AppFichaProduto
+    },
+  created(){
+        //this.$bus.$on('nome-do-evento', (data) => { this.anime = data})
+        this.CarrinhoComprasLocal = this.$store.state.CarrinhoCompras
+    },
+    computed: {
+        CarrinhoCompras(){
+            return this.$store.getters.CarrinhoCompras
+        }
+    },
+    methods:{
+            // carregaCarrinho(anime){
+            //     this.CarrinhoCompras.unshift({...anime, dataCompra: new Date()});
+            //     this.ultimaCompra = this.CarrinhoCompras[0].dataCompra;
+            //     //this.$bus.$emit('CARREGA_CARRINHO', anime)
+            //     this.$store.commit('setCarrinho', this.CarrinhoCompras);
+            // },
+            descarregaCarrinho(index){
+                this.CarrinhoCompras.splice(index,1)
+            },
+            sum(){
+            if (this.CarrinhoCompras < 1 ){
+                return 0
+            } else {
+                return this.CarrinhoCompras.map( (a) => Math.floor(a.preco))
+                                            .reduce((a,b) => {return a + b})
+            }
+        },
     verificaLogin() {
       if (sessionStorage.getItem("tipouser") === null) {
         console.log(sessionStorage.getItem("tipouser"));

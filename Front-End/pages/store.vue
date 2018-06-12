@@ -5,7 +5,7 @@
                 <h1>Loja</h1>
             </b-row>
             <b-row class="row-container">
-                <b-col class="column-main" cols="6">
+                <b-col class="column-main" cols="12">
                     <b-row class="title">
                         <h2>Animes</h2>
                     </b-row>
@@ -14,9 +14,10 @@
                                                     :key="index"
                                                     :idanime="anime.idanime"
                                                     :nome="anime.nome"
+                                                    :preco="anime.preco"
                                                     :autor="anime.autor"
                                                     :editora="anime.editora"
-                                                    v-on:click.native="chooseAnime(anime)"
+                                                    v-on:click.native=" carregaCarrinho(anime)"
                                                     style="cursor:pointer"/>
                     </b-row>
                     <b-row class="title">
@@ -27,30 +28,12 @@
                                                     :key="index"
                                                     :idmanga="manga.idmanga"
                                                     :nome="manga.nome"
+                                                    :preco="manga.preco"
                                                     :autor="manga.autor"
                                                     :editora="manga.editora"
-                                                    v-on:click.native="chooseManga(manga)"
+                                                    v-on:click.native="carregaCarrinho(manga)"
                                                     style="cursor:pointer"/>
                     </b-row>
-                </b-col>
-                <b-col class="column-carrinho" cols="6">
-                    <b-row class="title">
-                        <h2>Carrinho</h2>
-                    </b-row>
-                    <b-nav-item-dropdown id="Carrinho" class="fa fa-shopping-cart" size="xl">
-                                    <div v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
-                                    <b-dropdown-item v-else class="listaCarrinhoCompras">
-                                        <hr>
-                                        <h3>Carrinho de Compras</h3>
-                                        {{ ultimaCompra | date }} - {{sum()}} €
-                                        <AppFichaProduto v-for="(anime,index) in CarrinhoCompras"
-                                                            :key="index"
-                                                            :preco="anime.preco"
-                                                            :quantidade="anime.quantidade"
-                                                            v-on:click.native="descarregaCarrinho(anime)"
-                                                            />
-                                    </b-dropdown-item>
-                        </b-nav-item-dropdown>
                 </b-col>
             </b-row>
         </b-container>
@@ -64,17 +47,13 @@ import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
 export default {
     data(){
       return{
-        CarrinhoCompras:[],
+        CarrinhoComprasLocal:[],
         ultimaCompra: false,
         animes:[]
       }
     },
     components:{
         AppFichaProduto
-    },
-    created(){
-        //this.$bus.$on('nome-do-evento', (data) => { this.anime = data})
-        this.CarrinhoCompras = this.$store.state.CarrinhoCompras
     },
     asyncData(){
         return axios.all([
@@ -85,9 +64,23 @@ export default {
                 return { animes: res1.data, mangas: res2.data }
             }))
     },
+    created(){
+        if (!!localStorage.getItem('CarrinhoCompras')){
+            this.$store.commit('setCarrinho', JSON.parse(localStorage.getItem('CarrinhoCompras')));
+        }
+        //this.$bus.$on('nome-do-evento', (data) => { this.anime = data})
+        //this.CarrinhoComprasLocal = this.$store.state.CarrinhoCompras
+    },
     computed: {
         CarrinhoCompras(){
+            // if (!!localStorage.getItem('CarrinhoCompras')){
+            //     console.log(JSON.parse(localStorage.getItem('CarrinhoCompras')))
+            //     return JSON.parse(localStorage.getItem('CarrinhoCompras'))
+            // } else {
+            //     return this.$store.getters.CarrinhoCompras
+            // }
             return this.$store.getters.CarrinhoCompras
+            
         }
     },
     methods:{
@@ -97,17 +90,17 @@ export default {
                 //this.$bus.$emit('CARREGA_CARRINHO', anime)
                 this.$store.commit('setCarrinho', this.CarrinhoCompras);
             },
-            descarregaCarrinho(index){
-                this.CarrinhoCompras.splice(index,1)
-            },
+            // descarregaCarrinho(index){
+            //     this.CarrinhoCompras.splice(index,1)
+            // },
             sum(){
             if (this.CarrinhoCompras < 1 ){
                 return 0
             } else {
-                return this.CarrinhoCompras.map( (a) => Math.floor(a.Preco))
+                return this.CarrinhoCompras.map( (a) => Math.floor(a.preco))
                                             .reduce((a,b) => {return a + b})
             }
-            }
+        }
     },
 }
 </script>
@@ -124,7 +117,7 @@ export default {
     .column-main{
       padding: 0 20px 0 20px;  
       margin: 5px;
-      
+      width: 100%;
     }
 
     @media (max-width:767px) {

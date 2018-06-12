@@ -17,5 +17,13 @@ div{
     flex-direction: column;
     justify-content: space-between;
 }
+
+ @media (max-width:767px) {
+        div{
+            margin: 5px 20px 5px 20px;
+            padding: 10px;
+            width: 100%;
+        }
+    }
 </style>
 
