@@ -7,10 +7,11 @@
 <style scoped>
 div{
     background-color: white;
-    margin: 10px;
-    border: 2px solid grey;
-    padding: 2rem;
-    width: 48%;
+    margin: 5px 1px 5px 1px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 100%;
     position: relative;
     overflow: hidden;
     display: flex;

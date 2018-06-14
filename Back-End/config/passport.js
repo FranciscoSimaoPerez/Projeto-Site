@@ -75,7 +75,8 @@ module.exports = function (passport) {
                                 }
                                 var user = new Object();
                                 user.iduser = result.insertId;
-                                return done(null, user);
+                                dados.mensagem="";
+                                return done(null, dados);
                             });
                         }
                     });

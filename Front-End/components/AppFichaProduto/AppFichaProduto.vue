@@ -1,7 +1,10 @@
 <template>
     <AppQuote>
         <h2>{{nome}}</h2>
-        <p>{{preco}}€</p>
+        <p>Autor: {{autor}}</p>
+        <p>Editora: {{editora}}</p>
+        <p>Preço: {{preco}}€</p>
+        <p></p>
     </AppQuote>
 </template>
 
@@ -18,6 +21,14 @@ export default {
         },
         preco: {
             type: Number,
+            required: true
+        },
+        autor: {
+            type: String,
+            required: true
+        },
+        editora: {
+            type: String,
             required: true
         }
     }

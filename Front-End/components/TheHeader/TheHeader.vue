@@ -20,13 +20,17 @@
                     <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Hentai, Mangas.."/>
                     <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisa</b-button>
                 </b-nav-form>
-                <b-nav-item-dropdown id="Carrinho" class="fa fa-shopping-cart" size="xl">
-                                    <div v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
-                                    <b-dropdown-item v-else class="listaCarrinhoCompras">
-                                        <hr>
+                <b-nav-item-dropdown right id="Carrinho">
+                    <a slot="button-content">
+                    <em class="fa fa-shopping-cart"></em>
+                    </a>
+                                    <div class="listaCarrinhoCompras" v-if="CarrinhoCompras==0">Carrinho Vazio!</div>
+                                    <b-dropdown-item right v-else class="listaCarrinhoCompras">
+                                        
                                         <h3>Carrinho de Compras</h3>
                                         {{ ultimaCompra | date }} - {{sum()}} €
-                                        <AppFichaProduto v-for="(anime,index) in CarrinhoCompras"
+                                        <hr>
+                                        <AppFichaProdutoCarrinho v-for="(anime,index) in CarrinhoCompras"
                                                             :key="index"
                                                             :nome="anime.nome"
                                                             :preco="anime.preco"
@@ -40,9 +44,9 @@
                     <a slot="button-content">
                     <em>Admin</em>
                     </a>
-                    <b-dropdown-item><nuxt-link to="/admin">Admin Menu</nuxt-link></b-dropdown-item>
-                    <b-dropdown-item><nuxt-link to="/profile">Profile</nuxt-link></b-dropdown-item>
-                    <b-dropdown-item><button type="submit"  v-on:click="logout()" class="btn btn-lg">Logout</button></b-dropdown-item>
+                    <nuxt-link class="button" to="/admin"><b-dropdown-item-button class="drop-button">Admin Menu</b-dropdown-item-button></nuxt-link>
+                    <nuxt-link class="button" to="/profile"><b-dropdown-item-button class="drop-button">Profile</b-dropdown-item-button></nuxt-link>
+                    <b-dropdown-item-button class="drop-button" v-on:click="logout()">Logout</b-dropdown-item-button>
                 </b-nav-item-dropdown>
                 </div>
                 <div v-if="verificaLogin()[0]=='User'">
@@ -50,16 +54,16 @@
                     <a slot="button-content">
                     <em>User</em>
                     </a>
-                    <b-dropdown-item><nuxt-link to="/profile"><button type="submit"  class="btn btn-lg">Profile</button></nuxt-link></b-dropdown-item>
-                    <b-dropdown-item><button type="submit"  v-on:click="logout()" class="btn btn-lg">Logout</button></b-dropdown-item>
+                    <nuxt-link class="button" to="/profile"><b-dropdown-item-button class="drop-button">Profile</b-dropdown-item-button></nuxt-link>
+                    <b-dropdown-item-button class="drop-button" v-on:click="logout()">Logout</b-dropdown-item-button>
                 </b-nav-item-dropdown>
                 </div>
                 <b-nav-item-dropdown right v-if="verificaLogin()==''">
                     <a slot="button-content">
                     <em>Conta</em>
                     </a>
-                    <b-dropdown-item><nuxt-link to="/login"><a>Login</a></nuxt-link></b-dropdown-item>
-                    <b-dropdown-item><nuxt-link to="/signup"><a>Registo</a></nuxt-link></b-dropdown-item>
+                    <nuxt-link class="button" to="/login"><b-dropdown-item-button class="drop-button">Login</b-dropdown-item-button></nuxt-link>
+                    <nuxt-link class="button" to="/signup"><b-dropdown-item-button class="drop-button">Registo</b-dropdown-item-button></nuxt-link>
                 </b-nav-item-dropdown>
                 <b-nav-item right>
 
@@ -72,7 +76,7 @@
 
 <script>
 import axios from 'axios';
-import AppFichaProduto from '@/components/AppFichaProduto/AppFichaProduto';
+import AppFichaProdutoCarrinho from '@/components/AppFichaProdutoCarrinho/AppFichaProdutoCarrinho';
 
 export default {
   name: "TheHeader",
@@ -84,7 +88,7 @@ export default {
       }
     },
     components:{
-        AppFichaProduto
+        AppFichaProdutoCarrinho
     },
   created(){
         //this.$bus.$on('nome-do-evento', (data) => { this.anime = data})
@@ -157,6 +161,20 @@ export default {
 }
 .nav-item:hover {
   color: #000000;
+}
+
+.drop-button{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button {
+    text-decoration: none;
+}
+.listaCarrinhoCompras{
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
 }
 </style>
 
