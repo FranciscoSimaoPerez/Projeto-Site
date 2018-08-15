@@ -6,10 +6,11 @@
 
 <style scoped>
 div{
-    background-color: white;
+    background-color: #EEEEEE;
     margin: 10px;
-    border: 2px solid grey;
+    border: 2px solid gray;
     padding: 2rem;
+    border-radius: 5px;
     width: 48%;
     position: relative;
     overflow: hidden;
@@ -18,7 +19,7 @@ div{
     justify-content: space-between;
 }
 
- @media (max-width:767px) {
+ @media (max-width:1000px) {
         div{
             margin: 5px 20px 5px 20px;
             padding: 10px;

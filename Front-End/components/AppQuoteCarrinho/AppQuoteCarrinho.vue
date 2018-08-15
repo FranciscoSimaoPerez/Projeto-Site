@@ -6,7 +6,7 @@
 
 <style scoped>
 div{
-    background-color: white;
+    background-color: #EEEEEE;
     margin: 5px 1px 5px 1px;
     border: 1px solid grey;
     border-radius: 5px;
